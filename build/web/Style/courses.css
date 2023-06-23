@@ -24,7 +24,6 @@ section{
     display: flex;
 }
 .body {
-    z-index: -1;
     height: 100%;
     max-width: 1160px;
     width: 100%;
@@ -68,6 +67,8 @@ section{
     width: 250px;
 }
 .gallary-item-name{
+    cursor: pointer;
+    text-decoration: none;
     position: absolute;
     bottom: 16px;
     left: 20px;

@@ -6,32 +6,25 @@
 }
 
 body{
-    z-index: -1;
     display: flex;
-    justify-content: center;
-
+    flex-direction: column;
 }
-section{
-    position: absolute;
-    top: 80px;
-    margin: 0 auto;
-    width: 100%;
-    margin: 0 auto;
-    max-width: 1440px;
 
+section{
+     margin: 0 auto;
+    max-width: 1440px;
+    width: 100%;
 }
 
 .view {
     display: flex;
 }
 .body {
-    height: 100%;
+    width: 100%;
     max-width: 1160px;
     width: 100%;
     padding: 30px 30px;
     background-color: #FEF4F4;
-    max-height: 664px;
-    height: 100%;
 }
 
 .body__user {
@@ -196,6 +189,7 @@ section{
     color: #696f79;
 }
 .cate-content-view {
+    z-index: 1000;
     display: flex;
     align-items: end;
     font-family: "Poppins";
@@ -224,8 +218,9 @@ section{
     height: 130px;
 }
 .gallary-item-name {
+    text-decoration: none;
     position: absolute;
-    bottom: 20px;
+    bottom: 10px;
     left: 22px;
     font-family: "Poppins";
     font-style: normal;

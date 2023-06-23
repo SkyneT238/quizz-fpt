@@ -1,17 +1,23 @@
-
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <jsp:useBean id="c" class="DAO.CourseDAO" scope="request"></jsp:useBean>
 <% response.setCharacterEncoding("UTF-8"); %>
-<%@ include file="/includes/header.jsp" %>
+
 <html>
+        <c:choose>
+            <c:when test="${ empty user}">
+                <c:redirect url="loginView.jsp" />
+            </c:when>
+            <c:otherwise>
+            </c:otherwise>
+        </c:choose>
     <head>
         <meta charset="UTF-8">
-        <title>Your Page Title</title>
+        <title>Dashboard</title>
         <link rel="stylesheet" type="text/css" href="Style/dashboard.css">
     </head>
-    
+    <body>
+        <%@ include file="/includes/header.jsp" %>
         <section >
             <div class="view">
                 <%@ include file="/includes/sidebar.jsp" %>
@@ -39,6 +45,7 @@
                                 </div>
                                 <div class="paramenters__item">
                                     <div class="paramenters__item-logo">
+                                        
                                         <img class="item-img" src="assets/clock.svg" />
                                     </div>
                                     <div class="paramenters__item-container">
@@ -85,10 +92,9 @@
                                 <c:forEach items="${c.featuredCourses}" var="i">
                                      <div class="gallary-item">
                                     <img src="<c:url value="${i.courseImg}"/>" class="gallary-item-img" />
-                                    <div class="gallary-item-name">${i.courseName}</div>
+                                    <a class="gallary-item-name"  href="instructionView.jsp">${i.courseName}</a>
                                 </div>
-                                </c:forEach>
-                               
+                                </c:forEach>                            
                                
                             </div>
                         </div>

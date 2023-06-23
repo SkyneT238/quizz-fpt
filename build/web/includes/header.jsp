@@ -38,7 +38,7 @@
                         <i class="fa-solid fa-magnifying-glass search-icon"></i>
                         <input class="search-input" type="text" placeholder="Search..."> </input>
                     </div>
-                    <button class="header-btn" href="../coursesView.jsp">Start Quiz</button>
+                    <button class="header-btn" href="coursesView.jsp">Start Quiz</button>
                     <div class="header-user">
                         <img class="header-user-img" src="../img.jpg" alt="">
                         <p class="header-user-name">${user.username}</p>
@@ -56,7 +56,7 @@
                             </div>
                             <div class="info-item">
                                 <i class="fa-solid fa-arrow-right-from-bracket info-icon"></i>
-                                <a  class="info-link">Log out</a>
+                                <a  class="info-link" href="logout" >Log out</a>
                             </div>
                         </div>
                     </div>
@@ -66,3 +66,4 @@
         <script src="js/showJs.js"></script>
     </body>
 </html>
+

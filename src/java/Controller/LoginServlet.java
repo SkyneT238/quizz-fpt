@@ -13,6 +13,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.URLEncoder;
 import java.util.*;
 
 /**
@@ -71,11 +72,14 @@ public class LoginServlet extends HttpServlet {
                 response.addCookie(cEmail);
                 response.addCookie(cPass);
                 response.addCookie(cRemember);
+                String encodedUsername = URLEncoder.encode(a.getUsername(), "UTF-8");
+                String encodeUser = URLEncoder.encode(a.getUsername(), "UTF-8");
                 request.getSession().setAttribute("user", a);
                 request.setAttribute("status", "success");
                 request.setAttribute("title", "Great!");
                 request.setAttribute("message", "You have successfully logged in!");
-                request.getRequestDispatcher("dashboardView.jsp").forward(request, response);
+                //request.getRequestDispatcher("dashboardView.jsp").forward(request, response);
+                  response.sendRedirect("dashboardView.jsp?username=" + encodedUsername);
             }
         } catch (Exception e) {
         }

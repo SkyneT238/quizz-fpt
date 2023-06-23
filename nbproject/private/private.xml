@@ -3,23 +3,25 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/E:/NetBean/QuizletFPT/web/index.html</file>
             <file>file:/E:/NetBean/QuizletFPT/src/java/Controller/LoginServlet.java</file>
-            <file>file:/E:/NetBean/QuizletFPT/src/java/Model/Courses.java</file>
-            <file>file:/E:/NetBean/QuizletFPT/src/java/Model/Account.java</file>
-            <file>file:/E:/NetBean/QuizletFPT/src/java/DAO/DashBoardDAO.java</file>
+            <file>file:/E:/NetBean/QuizletFPT/web/instructionView.jsp</file>
+            <file>file:/E:/NetBean/QuizletFPT/web/quizView.jsp</file>
             <file>file:/E:/NetBean/QuizletFPT/web/includes/header.jsp</file>
             <file>file:/E:/NetBean/QuizletFPT/web/loginView.jsp</file>
-            <file>file:/E:/NetBean/QuizletFPT/src/java/DAO/RegisterDAO.java</file>
-            <file>file:/E:/NetBean/QuizletFPT/src/java/DAO/LoginDAO.java</file>
-            <file>file:/E:/NetBean/QuizletFPT/src/java/Controller/CoursesServlet.java</file>
+            <file>file:/E:/NetBean/QuizletFPT/web/Style/dashboard.css</file>
+            <file>file:/E:/NetBean/QuizletFPT/web/Style/sidebar.css</file>
+            <file>file:/E:/NetBean/QuizletFPT/web/js/showJs.js</file>
             <file>file:/E:/NetBean/QuizletFPT/web/coursesView.jsp</file>
-            <file>file:/E:/NetBean/QuizletFPT/src/java/DAO/CourseDAO.java</file>
+            <file>file:/E:/NetBean/QuizletFPT/web/Style/register.css</file>
             <file>file:/E:/NetBean/QuizletFPT/web/dashboardView.jsp</file>
             <file>file:/E:/NetBean/QuizletFPT/src/java/Controller/RegisterServlet.java</file>
-            <file>file:/E:/NetBean/QuizletFPT/src/java/Context/DBContext.java</file>
+            <file>file:/E:/NetBean/QuizletFPT/web/includes/sidebar.jsp</file>
+            <file>file:/E:/NetBean/QuizletFPT/web/Style/login.css</file>
             <file>file:/E:/NetBean/QuizletFPT/web/registerView.jsp</file>
-            <file>file:/E:/NetBean/QuizletFPT/src/java/DAO/HashDAO.java</file>
+            <file>file:/E:/NetBean/QuizletFPT/web/Style/instruction.css</file>
+            <file>file:/E:/NetBean/QuizletFPT/src/java/Controller/LogoutServlet.java</file>
+            <file>file:/E:/NetBean/QuizletFPT/web/Style/header.css</file>
+            <file>file:/E:/NetBean/QuizletFPT/web/Style/courses.css</file>
         </group>
     </open-files>
 </project-private>
