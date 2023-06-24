@@ -5,6 +5,7 @@
 package Controller;
 
 import jakarta.servlet.ServletException;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -32,28 +33,19 @@ public class LogoutServlet extends HttpServlet {
     if (session != null) {
         session.invalidate();
     }
-    
-    // Prevent caching of the page
-    response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
-    response.setHeader("Pragma", "no-cache");
-    response.setDateHeader("Expires", 0);
-    
-    // Add additional cache control headers
-    response.setHeader("Cache-Control", "private, no-store, no-cache, must-revalidate");
-    response.setHeader("Pragma", "no-cache");
-    
-    // Prevent back button navigation
-    response.getWriter().println("<script>");
-    response.getWriter().println("if (window.history.replaceState) {");
-    response.getWriter().println("    window.history.replaceState(null, null, window.location.href);");
-    response.getWriter().println("}");
-    response.getWriter().println("</script>");
-    
-    // Add meta tags to prevent caching
-    response.getWriter().println("<meta http-equiv=\"Cache-Control\" content=\"no-cache, no-store, must-revalidate\">");
-    response.getWriter().println("<meta http-equiv=\"Pragma\" content=\"no-cache\">");
-    response.getWriter().println("<meta http-equiv=\"Expires\" content=\"0\">");
-    
+     Cookie emailCookie = new Cookie("cEmail", "");
+    emailCookie.setMaxAge(0);
+    response.addCookie(emailCookie);
+
+    // Xóa cookie với tên cPassword
+    Cookie passwordCookie = new Cookie("cPass", "");
+    passwordCookie.setMaxAge(0);
+    response.addCookie(passwordCookie);
+
+    // Xóa cookie với tên cRemember
+    Cookie rememberCookie = new Cookie("cRemember", "");
+    rememberCookie.setMaxAge(0);
+    response.addCookie(rememberCookie);
         response.sendRedirect("loginView.jsp");
     }
 

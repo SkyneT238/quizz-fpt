@@ -39,13 +39,15 @@
                         <input class="search-input" type="text" placeholder="Search..."> </input>
                     </div>
                     <button class="header-btn" href="coursesView.jsp">Start Quiz</button>
-                    <div class="header-user">
-                        <img class="header-user-img" src="../img.jpg" alt="">
-                        <p class="header-user-name">${user.username}</p>
-                        <div class="showButton" id="showmore-arrow" onclick="toggleHeaderInfo()">
-                            <i class="fa-solid fa-caret-down showmore-arrow"></i>
+                    <div class="header-user"  id="user-nav">
+                        <div class="user-box"> 
+                            <img class="header-user-img" src="../img.jpg" alt="">
+                            <div class="header-user-name">de1702482131</div>
                         </div>
-                        <div id="header-info"  style="display: none;" class="header-info">
+                        <div class="hearder-toggle" onclick="toggleHeaderInfo()">
+                            <div class="toggle-line"></div>
+                        </div>
+                        <div id="header-info"   class="header-info">
                             <div class="info-item">
                                 <i class="fa-solid fa-user info-icon"></i>
                                 <a href="profileView.jsp " class="info-link">Profile</a>
@@ -60,10 +62,12 @@
                             </div>
                         </div>
                     </div>
-                </header>
+
             </div>
-        </div>
-        <script src="js/showJs.js"></script>
-    </body>
+        </header>
+    </div>
+</div>
+<script src="js/showJs.js"></script>
+</body>
 </html>
 

@@ -1,16 +1,14 @@
-function toggleHeaderInfo() {
-  var headerInfo = document.getElementById("header-info");
-  var arrow = document.getElementById("showmore-arrow");
+document.addEventListener('click', function(event) {
+  var userNav = document.getElementById('user-nav');
+  var headerToggle = document.getElementById('header-toggle');
+  var targetElement = event.target;
 
-  if (headerInfo.style.display === "none") {
-    // Header info is currently hidden, so show it
-    headerInfo.style.display = "block";
-    arrow.classList.add("rotate");
-  } else {
-    // Header info is currently visible, so hide it
-    headerInfo.style.display = "none";
-    arrow.classList.remove("rotate");
+  if (targetElement !== headerToggle && !userNav.contains(targetElement)) {
+    userNav.classList.remove('active');
   }
+});
+
+function toggleHeaderInfo() {
+  var userNav = document.getElementById('user-nav');
+  userNav.classList.toggle('active');
 }
-
-
