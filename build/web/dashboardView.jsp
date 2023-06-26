@@ -4,13 +4,13 @@
 <% response.setCharacterEncoding("UTF-8"); %>
 
 <html>
-        <c:choose>
-            <c:when test="${ empty user}">
-                <c:redirect url="loginView.jsp" />
-            </c:when>
-            <c:otherwise>
-            </c:otherwise>
-        </c:choose>
+    <c:choose>
+        <c:when test="${ empty user}">
+            <c:redirect url="loginView.jsp" />
+        </c:when>
+        <c:otherwise>
+        </c:otherwise>
+    </c:choose>
     <head>
         <meta charset="UTF-8">
         <title>Dashboard</title>
@@ -45,7 +45,7 @@
                                 </div>
                                 <div class="paramenters__item">
                                     <div class="paramenters__item-logo">
-                                        
+
                                         <img class="item-img" src="assets/clock.svg" />
                                     </div>
                                     <div class="paramenters__item-container">
@@ -90,12 +90,14 @@
                             </div>
                             <div class="cate__gallary">
                                 <c:forEach items="${c.featuredCourses}" var="i">
-                                     <div class="gallary-item">
-                                    <img src="<c:url value="${i.courseImg}"/>" class="gallary-item-img" />
-                                    <a class="gallary-item-name"  href="instructionView.jsp">${i.courseName}</a>
-                                </div>
-                                </c:forEach>                            
-                               
+                                    <div class="gallary-item">
+                                        <img src="<c:url value="${i.courseImg}"/>" class="gallary-item-img" />
+                                        <a class="gallary-item-name" href="instructionView.jsp?courseID=${i.courseID}&courseName=${i.courseName}&courseImg=${i.courseImg}">${i.courseName}</a>
+
+                                    </div>
+                                </c:forEach>
+
+
                             </div>
                         </div>
                     </div>

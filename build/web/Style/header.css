@@ -161,12 +161,12 @@ body {
 
 .header-user.active .hearder-toggle::before
 {
-    transform: translateY(0px) rotate(45deg) ;
+    transform: translateY(0px) rotate(50deg) ;
 }
 
 .header-user.active .hearder-toggle::after
 {
-    transform: translateY(0px) rotate(-45deg);
+    transform: translateY(0px) rotate(-50deg);
 }
 
 .header-user.active .hearder-toggle .toggle-line

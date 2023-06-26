@@ -29,7 +29,7 @@
         <aside class="sidebar">
             <div class="sidebar__item">
                 <i class=" sidebar__item-icon fa-solid fa-database"></i>
-                <a href="dashboardView.jsp" class="sidebar__item-list">Dashboard</a>
+                <a href="home" class="sidebar__item-list">Dashboard</a>
             </div>
             <div class="sidebar__item">
                 <i class=" sidebar__item-icon fa-solid fa-gamepad"></i>
@@ -42,11 +42,6 @@
             <div class="sidebar__item">
                 <i class=" sidebar__item-icon fa-solid fa-bell"></i>
                 <a href="#" class="sidebar__item-list">Notification</a>
-            </div>
-                <div class="sidebar__item">
-                <i class=" sidebar__item-icon fa-solid fa-bell"></i>
-                <a href="logout" class="sidebar__item-list">Logout</a>
-            </div>
         </aside>
     </body>
 </html>
