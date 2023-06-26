@@ -10,6 +10,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -34,10 +35,11 @@ public class CoursesServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
 //        get data from dao
         CourseDAO dao = new CourseDAO();
-         List<Courses> list = dao.getAllCourses();
+        List<Courses> list = dao.getAllCourses();
 //         set du lieu
-        request.setAttribute("cList", list);
-        request.getRequestDispatcher("coursesView.jsp").forward(request, response);  
+        HttpSession session = request.getSession();
+        session.setAttribute("cList", list);
+        request.getRequestDispatcher("coursesView.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -24,7 +24,7 @@
                         <c:forEach items="${c.allCourses}" var="i">
                             <div class="gallary-item">
                                 <img src="<c:url value="${i.courseImg}"/>" class="gallary-item-img" />
-                                <a href="instructionView.jsp" class="gallary-item-name">${i.courseName}</a>
+                                <a href="instructionView.jsp?courseID=${i.courseID}&courseName=${i.courseName}&courseImg=${i.courseImg}" class="gallary-item-name">${i.courseName}</a>
                             </div>
                         </c:forEach>
                     </div>

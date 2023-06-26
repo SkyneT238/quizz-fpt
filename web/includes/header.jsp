@@ -31,7 +31,7 @@
         <div class="main">
             <div class="main-container">
                 <header class="header">
-                    <a class="header-title" href="dashboardView.jsp">
+                    <a class="header-title" href="home">
                         <h1 class="header-title">FPT Quiz</h1>
                     </a>
                     <div class="header-search">
@@ -42,7 +42,7 @@
                     <div class="header-user"  id="user-nav">
                         <div class="user-box"> 
                             <img class="header-user-img" src="../img.jpg" alt="">
-                            <div class="header-user-name">de1702482131</div>
+                            <div class="header-user-name">${user.username}</div>
                         </div>
                         <div class="hearder-toggle" onclick="toggleHeaderInfo()">
                             <div class="toggle-line"></div>

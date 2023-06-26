@@ -1,12 +1,18 @@
-<%-- 
-    Document   : instructionView
-    Created on : Jun 23, 2023, 7:20:46 AM
-    Author     : vohuy
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <% response.setCharacterEncoding("UTF-8"); %>
 <%@ include file="/includes/header.jsp" %>
+
+<%
+    String courseID = request.getParameter("courseID");
+    String courseName = request.getParameter("courseName");
+    String courseImg = request.getParameter("courseImg");
+%>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page import="DAO.QuestionDAO"%>
+<%@page import="Model.Question"%>
+<%@ page import="java.util.List" %>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -20,20 +26,25 @@
                 <%@ include file="/includes/sidebar.jsp" %>
                 <div class="body">
                     <div class="body__header">
-                        <h1 class="body__header-title">History quiz</h1>
+                        <h1 class="body__header-title"><%= courseName %></h1>
                         <p class="body__header-desc">Answer the question below</p>
                     </div>
                     <div class="body__quiz">
                         <div class="body__quiz-img">
-                                <img class="" src="assets/form/formImg.png" />
+                            <img class="" src="<%= courseImg %>" alt="Course Image" />
                         </div>
                         <div class="body__quiz-content">
                             <div class="quiz-item">
                                 <div class="quiz-item-title">Question 1/5</div>
                                 <div class="quiz-item-desc">
-                                    Guy Bailey, Roy Hackett and Paul Stephenson made history in
-                                    1963, as part of a protest against a bus company that refused
-                                    to employ black and Asian drivers in which UK city?
+                                    <%-- Lấy danh sách câu hỏi từ DAO dựa trên courseID --%>
+                                    <% QuestionDAO questionDAO = new QuestionDAO(); %>
+                                    <% List<Question> questionList = questionDAO.getQuestion(Integer.parseInt(courseID)); %>
+                                    <%-- Hiển thị câu hỏi --%>
+                                    <% if (questionList != null && questionList.size() > 0) { %>
+                                    <% Question question = questionList.get(0); %> <!-- Lấy câu hỏi đầu tiên trong danh sách -->
+                                    <p><%= question.getQuestionContent() %></p>
+                                    <% } %>
                                 </div>
                             </div>
                         </div>
@@ -41,27 +52,23 @@
                     <div class="body__ans">
                         <div class="body__ans-title">Choose an answer</div>
                         <div class="body__ans-choose">
-                            <div class="ans-item">
-                                <div class="ans-item-circle"></div>
-                                <p class="ans-item-text">London</p>
-                            </div>
-                            <div class="ans-item">
-                                <div class="ans-item-circle"></div>
-                                <p class="ans-item-text">Edinburg</p>
-                            </div>
-                            <div class="ans-item">
-                                <div class="ans-item-circle"></div>
-                                <p class="ans-item-text">Liverpool</p>
-                            </div>
-                            <div class="ans-item">
-                                <div class="ans-item-circle"></div>
-                                <p class="ans-item-text">Canary whart</p>
-                            </div>
+                            <%-- Hiển thị các đáp án --%>
+                            <% if (questionList != null && questionList.size() > 0) { %>
+                            <% Question question = questionList.get(0); %> <!-- Lấy câu hỏi đầu tiên trong danh sách -->
+                            <% List<String> answers = question.getAnswers(); %> <!-- Lấy danh sách các đáp án -->
+                            <%-- Sử dụng JSTL để lặp qua danh sách các đáp án và hiển thị --%>
+                            <c:forEach var="answer" items="<%= answers %>">
+                                <div class="ans-item">
+                                    <div class="ans-item-circle"></div>
+                                    <p class="ans-item-text"><c:out value="${answer}"/></p>
+                                </div>
+                            </c:forEach>
+                            <% } %>
                         </div>
-                        
                     </div>
-                     <button class="body__submit-btn">Submit</button>
+                    <button class="body__submit-btn">Submit</button>
                 </div>
+            </div>
         </section>
     </body>
 </html>

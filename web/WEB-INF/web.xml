@@ -4,9 +4,25 @@
         <servlet-name>LoginServlet</servlet-name>
         <servlet-class>Controller.LoginServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>QuizServlet</servlet-name>
+        <servlet-class>Controller.QuizServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>HomeServlet</servlet-name>
+        <servlet-class>Controller.HomeServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LogoutServlet</servlet-name>
         <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>QuizServlet</servlet-name>
+        <url-pattern>/quiz</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>HomeServlet</servlet-name>
+        <url-pattern>/home</url-pattern>
     </servlet-mapping>
     <mime-mapping>
         <extension>css</extension>
