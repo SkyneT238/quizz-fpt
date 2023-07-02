@@ -3,8 +3,26 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/E:/NetBean/quizzz/web/loginView.jsp</file>
-            <file>file:/E:/NetBean/quizzz/web/registerView.jsp</file>
+            <file>file:/E:/NetBean/quizz-fpt/web/WEB-INF/web.xml</file>
+            <file>file:/E:/NetBean/quizz-fpt/web/loginView.jsp</file>
+            <file>file:/E:/NetBean/quizz-fpt/web/dashboardView.jsp</file>
+            <file>file:/E:/NetBean/quizz-fpt/web/registerView.jsp</file>
+            <file>file:/E:/NetBean/quizz-fpt/web/instructionView.jsp</file>
+            <file>file:/E:/NetBean/quizz-fpt/src/java/bundle/bundle_en.properties</file>
+            <file>file:/E:/NetBean/quizz-fpt/web/index.html</file>
+            <file>file:/E:/NetBean/quizz-fpt/src/java/DAO/LoginDAO.java</file>
+            <file>file:/E:/NetBean/quizz-fpt/src/java/Controller/RegisterServlet.java</file>
+            <file>file:/E:/NetBean/quizz-fpt/src/java/bundle/bundle_es.properties</file>
+            <file>file:/E:/NetBean/quizz-fpt/web/META-INF/context.xml</file>
+            <file>file:/E:/NetBean/quizz-fpt/web/js/formJs.js</file>
+            <file>file:/E:/NetBean/quizz-fpt/src/java/Controller/CoursesServlet.java</file>
+            <file>file:/E:/NetBean/quizz-fpt/src/java/DAO/DashBoardDAO.java</file>
+            <file>file:/E:/NetBean/quizz-fpt/web/coursesView.jsp</file>
+            <file>file:/E:/NetBean/quizz-fpt/web/js/showJs.js</file>
+            <file>file:/E:/NetBean/quizz-fpt/web/quizView.jsp</file>
+            <file>file:/E:/NetBean/quizz-fpt/src/java/Controller/LoginServlet.java</file>
+            <file>file:/E:/NetBean/quizz-fpt/web/WEB-INF/tlds/mytag.tld</file>
+            <file>file:/E:/NetBean/quizz-fpt/src/java/Controller/HomeServlet.java</file>
         </group>
     </open-files>
 </project-private>

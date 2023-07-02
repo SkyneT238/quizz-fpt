@@ -1,7 +1,11 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <jsp:useBean id="c" class="DAO.CourseDAO" scope="request"></jsp:useBean>
 <% response.setCharacterEncoding("UTF-8"); %>
+
+<fmt:setLocale value="${sessionScope.lang}" />
+<fmt:setBundle basename="bundle.bundle" />
 
 <html>
     <c:choose>
@@ -28,7 +32,7 @@
                         <div class="user__data-content">
                             <div class="data-info">
                                 <div class="data-info-name">${user.username}</div>
-                                <div class="data-info-type">Bonus booster 24lv</div>
+                                <div class="data-info-type"><fmt:message key="login.tiltle.big"/></div>
                             </div>
                             <div class="user__data-process">
                                 <div class="data-progress-bar"></div>

@@ -22,7 +22,7 @@
             crossorigin="anonymous"
             referrerpolicy="no-referrer"
             />
-        <link rel="stylesheet" href="Style/header.css"/>
+        <link rel="stylesheet" href="Style/headerCss.css"/>
         <title>JSP Page</title>
     </head>
     <% request.setCharacterEncoding("UTF-8"); %>
@@ -38,7 +38,7 @@
                         <i class="fa-solid fa-magnifying-glass search-icon"></i>
                         <input class="search-input" type="text" placeholder="Search..."> </input>
                     </div>
-                    <button class="header-btn" href="coursesView.jsp">Start Quiz</button>
+                    <a class="header-btn" href="courses">Start Quiz</a>
                     <div class="header-user"  id="user-nav">
                         <div class="user-box"> 
                             <img class="header-user-img" src="../img.jpg" alt="">
@@ -62,12 +62,10 @@
                             </div>
                         </div>
                     </div>
-
+                </header>
             </div>
-        </header>
-    </div>
-</div>
-<script src="js/showJs.js"></script>
-</body>
+        </div>
+        <script src="js/showJs.js"></script>
+    </body>
 </html>
 

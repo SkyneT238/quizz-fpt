@@ -1,5 +1,31 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<c:choose>
+    <c:when test="${empty sessionScope.lang}">
+        <c:set var="defaultLang" value="vi" />
+        <fmt:setLocale value="${defaultLang}" scope="session" />
+         <fmt:setBundle basename="bundle.bundle" />
+        <c:set var="lang" value="${defaultLang}" scope="session" />
+    </c:when>
+    <c:otherwise>
+        <c:set var="lang" value="${sessionScope.lang}" />
+        <fmt:setLocale value="${lang}" scope="session" />
+                <fmt:setBundle basename="bundle.bundle" />
+    </c:otherwise>
+</c:choose>
+
+
+<c:choose>
+    <c:when test="${not empty user}">
+        <c:redirect url="dashboardView.jsp" />
+    </c:when>
+    <c:otherwise>
+    </c:otherwise>
+</c:choose>
+
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -12,58 +38,50 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     </head>
     <body>
-        <c:choose>
-            <c:when test="${not empty user}">
-                <c:redirect url="dashboardView.jsp" />
-            </c:when>
-            <c:otherwise>
-            </c:otherwise>
-        </c:choose>
-
         <div class="body">
             <div class="container">
                 <div class="container__content">
                     <div class="container__content-form">
                         <div class="form-title">
-                            <h1 class="title">Login to your Account</h1>
-                            <p class="desc">with your email address</p>
+                            <h1 class="title"><fmt:message key="login.tiltle.big"/></h1>
+                            <p class="desc"><fmt:message key="login.tiltle.small"/></p>
                         </div>
                         <c:set var="cookie" value="${pageContext.request.cookies}" />
                         <form action="login" method="post" class="form-items">
-                       
+
                             <div class="form-item">
-                                <label class="form-item-name">Email*</label>
+                                <label class="form-item-name"><fmt:message key="login.email"/></label>
                                 <input
                                     class="form-item-input"
                                     name="email"
                                     type="email"
-                                    placeholder="Enter your email..."
+                                    placeholder="<fmt:message key="login.email.focus"/>"
                                     value ="${cookie.cEmail.value != null ? cookie.cEmail.value : email }"
                                     />
                             </div>
                             <div class="form-item">
-                                <label class="form-item-name">Password*</label>
+                                <label class="form-item-name"><fmt:message key="login.password"/></label>
                                 <input
                                     class="form-item-input"
                                     type="password"
                                     name="password"
-                                    placeholder="Enter your password..."
+                                    placeholder="<fmt:message key="login.password.focus"/>"
                                     id="logPass"
                                     value ="${cookie.cPass.value}"
                                     />
                             </div>
                             <div class="showPass">
                                 <input type="checkbox" name="remember" ${cookie.cRemember != null ? "checked" : ""} />
-                                <p>Remember Password</p>
+                                <p><fmt:message key="login.remember"/></p>
                             </div>
                             <!--                            <div class="form-checkbox">
                                                             <input class="form-checkbox-input"  type="checkbox" />
                                                             <p class="form-checkbox-desc">Remember my password</p>
                                                         </div>-->
                             <div class="form-log">
-                                <input type="submit" value="Log in" class="create-btn" onclick="logAlert()"></input>
-                                <p class="option">Or</p>
-                                <a class='log-btn' href="registerView.jsp">Sign up</a>
+                                <input type="submit" value=<fmt:message key="login.tiltle"/>" class="create-btn" onclick="logAlert()"></input>
+                                <p class="option"><fmt:message key="login.or"/></p>
+                                <a class='log-btn' href="registerView.jsp"><fmt:message key="signup.tiltle"/></a>
                             </div>
                         </form>
 
@@ -73,34 +91,31 @@
                     <div class="container__img-blur"></div>
                     <div class="container__img-desc">
                         <div class="desc-open">“</div>
-                        Those people who develop the ability to continuously acquire new and
-                        better forms of knowledge that they can apply to their work and to
-                        their lives will be the movers and shakers in our society for the
-                        indefinite future
+                        <fmt:message key="login.introduction"/>
                     </div>
                 </div>
                 <div class="container__back">
                     <i class="container__back-icon fa-solid fa-arrow-left"></i>
-                    <a class="container__back-text" href="index.html">Back</a>
+                    <a class="container__back-text" href="index.html"><fmt:message key="login.back"/></a>
                 </div>
             </div>
         </div>
 
     </body>
     <script>
-        window.onload = function() {
-        var status = '${status}';
-        var title = '${title}';
-        var message = '${message}';
+        window.onload = function () {
+            var status = '${status}';
+            var title = '${title}';
+            var message = '${message}';
 
-        if (status && title && message) {
-            Swal.fire({
-                icon: status,
-                title: title,
-                text: message
-            });
-        }
-    };
+            if (status && title && message) {
+                Swal.fire({
+                    icon: status,
+                    title: title,
+                    text: message
+                });
+            }
+        };
         function showPassLog() {
             var x = document.getElementById("logPass");
             if (x.type === "password") {

@@ -12,6 +12,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ResourceBundle;
 
 /**
  *
@@ -34,24 +35,23 @@ public class RegisterServlet extends HttpServlet {
         String username = request.getParameter("username");
         String email = request.getParameter("email");
         String pass = request.getParameter("password");
-
+        ResourceBundle bundle = ResourceBundle.getBundle("bundle.bundle", request.getLocale());
         try {
             RegisterDAO register = new RegisterDAO();
             if (register.isEmpty(username) || register.isEmpty(pass) || register.isEmpty(email)) {
                 request.setAttribute("status", "error");
-                request.setAttribute("title", "Oops...");
-                request.setAttribute("message", "*Please provide all required information!");
+                request.setAttribute("title", bundle.getString("login.error.tiltle"));
+                request.setAttribute("message", bundle.getString("signup.error.message.provide"));
                 request.getRequestDispatcher("registerView.jsp").forward(request, response);
             } else {
                 Account a = register.checkAccountExist(email);
                 if (a == null) {
                     register.register(username, pass, email);
-                    request.setAttribute("success", "*Registration successful, please log in!");
                     response.sendRedirect("loginView.jsp");
                 } else {
                     request.setAttribute("status", "error");
-                    request.setAttribute("title", "Oops...");
-                    request.setAttribute("message", "Email already existed!");
+                    request.setAttribute("title", bundle.getString("login.error.tiltle"));
+                    request.setAttribute("message", bundle.getString("signup.error.message.existed"));
                     request.getRequestDispatcher("registerView.jsp").forward(request, response);
                 }
             }
