@@ -38,7 +38,7 @@ public class ChangeLanguage extends HttpServlet {
         // Check if the "engine" parameter is not null and equals a specific value
 //       RequestDispatcher dispatcher = request.getRequestDispatcher(request.getServletPath());
 //    dispatcher.forward(request, response);
-        System.out.println();
+        System.out.println(request.getParameter("servletPath"));
          response.sendRedirect(request.getParameter("servletPath").substring(1));
     }
 

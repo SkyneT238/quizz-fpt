@@ -1,6 +1,11 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <% response.setCharacterEncoding("UTF-8"); %>
-<%@ include file="/includes/header.jsp" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<c:set var="lang" value="${cookie.lang.value}" />
+<fmt:setLocale value="${lang}" scope="session" />
+<fmt:setBundle basename="bundle.bundle" />
 
 <!DOCTYPE html>
 <html>
@@ -9,6 +14,7 @@
         <title>Instruction</title>
         <link rel="stylesheet" type="text/css" href="Style/instruction.css">
     </head>
+    <%@ include file="/includes/header.jsp" %>
     <body>
         <section>
             <div class="view">
