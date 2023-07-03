@@ -37,36 +37,6 @@ public class QuestionDAO {
         }
         return list;
     }
-public Answer getAnswersByQuestionId(int questionId) {
-    Answer answer = new Answer();
-    String query = "SELECT answer1, answer2, answer3, correctAnswer\n"
-            + "FROM tblQuestion\n"
-            + "WHERE questionID = ?";
-    try {
-        conn = new DBContext().getConnection();
-        ps = conn.prepareStatement(query);
-        ps.setInt(1, questionId);
-        rs = ps.executeQuery();
-        if (rs.next()) {
-            List<String> answers = new ArrayList<>();
-            answers.add(rs.getString("answer1"));
-            answers.add(rs.getString("answer2"));
-            answers.add(rs.getString("answer3"));
-            answer.setCorrectAnswer(rs.getString("correctAnswer"));
-
-            // Xáo trộn thứ tự các câu trả lời
-            Collections.shuffle(answers);
-
-            // Gán giá trị các câu trả lời đã xáo trộn vào đối tượng Answer
-            answer.setAnswer1(answers.get(0));
-            answer.setAnswer2(answers.get(1));
-            answer.setAnswer3(answers.get(2));
-        }
-    } catch (Exception e) {
-        // Xử lý ngoại lệ (exception handling)
-    }
-    return answer;
-}
      public static void main(String[] args) {
         QuestionDAO dao = new QuestionDAO();
         List<Question> list = dao.getQuestion(1);

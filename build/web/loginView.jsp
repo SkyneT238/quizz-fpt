@@ -3,18 +3,25 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <c:choose>
-    <c:when test="${empty sessionScope.lang}">
+    <c:when test="${empty cookie.lang}">
         <c:set var="defaultLang" value="vi" />
         <fmt:setLocale value="${defaultLang}" scope="session" />
-         <fmt:setBundle basename="bundle.bundle" />
+        <fmt:setBundle basename="bundle.bundle" />
         <c:set var="lang" value="${defaultLang}" scope="session" />
+
+        <% 
+            Cookie cookie = new Cookie("lang", "${defaultLang}");
+            response.addCookie(cookie);
+        %>
     </c:when>
     <c:otherwise>
-        <c:set var="lang" value="${sessionScope.lang}" />
+        <c:set var="lang" value="${cookie.lang.value}" />
         <fmt:setLocale value="${lang}" scope="session" />
-                <fmt:setBundle basename="bundle.bundle" />
+        <fmt:setBundle basename="bundle.bundle" />
     </c:otherwise>
 </c:choose>
+
+
 
 
 <c:choose>
@@ -79,7 +86,7 @@
                                                             <p class="form-checkbox-desc">Remember my password</p>
                                                         </div>-->
                             <div class="form-log">
-                                <input type="submit" value=<fmt:message key="login.tiltle"/>" class="create-btn" onclick="logAlert()"></input>
+                                <input type="submit" value="<fmt:message key="login.tiltle"/>" class="create-btn" onclick="logAlert()"></input>
                                 <p class="option"><fmt:message key="login.or"/></p>
                                 <a class='log-btn' href="registerView.jsp"><fmt:message key="signup.tiltle"/></a>
                             </div>

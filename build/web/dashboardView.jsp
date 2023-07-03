@@ -4,7 +4,8 @@
 <jsp:useBean id="c" class="DAO.CourseDAO" scope="request"></jsp:useBean>
 <% response.setCharacterEncoding("UTF-8"); %>
 
-<fmt:setLocale value="${sessionScope.lang}" />
+<c:set var="lang" value="${cookie.lang.value}" />
+<fmt:setLocale value="${lang}" scope="session" />
 <fmt:setBundle basename="bundle.bundle" />
 
 <html>
@@ -18,10 +19,11 @@
     <head>
         <meta charset="UTF-8">
         <title>Dashboard</title>
-        <link rel="stylesheet" type="text/css" href="Style/dashboard.css">
+        <link rel="stylesheet" type="text/css" href="Style/dashboardCss.css">
     </head>
+    <%@ include file="/includes/header.jsp" %>
+
     <body>
-        <%@ include file="/includes/header.jsp" %>
         <section >
             <div class="view">
                 <%@ include file="/includes/sidebar.jsp" %>
@@ -71,7 +73,7 @@
                     </div>
                     <div class="body__collect">
                         <div class="collect__acheive">
-                            <div class="acheive-tiltle">Acheivements</div>
+                            <div class="acheive-tiltle"><fmt:message key="dashboard.acheivements"/></div>
                             <div class="acheive-board">
                                 <div class="acheive-board-item medals-comback">
                                     <img src="assets/start1.svg" alt="" />
@@ -82,6 +84,7 @@
                                     <div>Lucky</div>
                                 </div>
                                 <div class="acheive-board-item medals-winner">
+                                    <link href="Style/dashboardCss.css" rel="stylesheet" type="text/css"/>
                                     <img src="assets/start3.svg" alt="" />
                                     <div>Winner</div>
                                 </div>
@@ -89,15 +92,20 @@
                         </div>
                         <div class="collect__cate">
                             <div class="cate-content">
-                                <div class="cate-content-tiltle">Featured Category</div>
-                                <a class="cate-content-view" href="courses">View All</a>
+                                <div class="cate-content-tiltle"><fmt:message key="dashboard.cate"/></div>
+                                <a class="cate-content-view" href="courses"><fmt:message key="dashboard.viewall"/></a>
                             </div>
                             <div class="cate__gallary">
                                 <c:forEach items="${c.featuredCourses}" var="i">
-                                    <div class="gallary-item">
-                                        <img src="<c:url value="${i.courseImg}"/>" class="gallary-item-img" />
-                                        <a class="gallary-item-name" href="instructionView.jsp?courseID=${i.courseID}&courseName=${i.courseName}&courseImg=${i.courseImg}">${i.courseName}</a>
-
+                                    <div class="card">
+                                        <img src="<c:url value="${i.courseImg}"/>" class="card-img" alt="" />
+                                        <div class="card-body">
+                                            <div class="card-title">${i.courseName}</div>
+                                            <div class="card-info">
+                                                ${i.courseInfo}
+                                            </div>
+                                            <button class="card-button"><a href="instruction?courseID=${i.courseID}"><fmt:message key="dashboard.enroll"/></a></button>
+                                        </div>
                                     </div>
                                 </c:forEach>
 

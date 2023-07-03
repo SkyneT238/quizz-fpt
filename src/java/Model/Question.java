@@ -5,6 +5,7 @@
 package Model;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -20,6 +21,7 @@ public class Question {
     private String correctAnswer;
     private Date createdAt;
     private Date updatedAt;
+    private ArrayList<String> answersList;
 
     public Question(int questionID, int collectionID, String questionContent, String difficulty, String answer1, String answer2, String answer3, String correctAnswer, Date createdAt, Date updatedAt) {
         this.questionID = questionID;
@@ -32,6 +34,14 @@ public class Question {
         this.correctAnswer = correctAnswer;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
+        answersList = new ArrayList<>();
+        answersList.add(answer1);
+        answersList.add(answer2);
+        answersList.add(answer3);
+        answersList.add(correctAnswer);
+
+        // Shuffle the answers randomly
+        Collections.shuffle(answersList);
     }
 
     public Question() {
@@ -123,7 +133,7 @@ public class Question {
         answers.add(answer1);
         answers.add(answer2);
         answers.add(answer3);
-         answers.add(correctAnswer);
+        answers.add(correctAnswer);
         return answers;
     }
 
@@ -142,6 +152,15 @@ public class Question {
                 + ", createdAt=" + createdAt
                 + ", updatedAt=" + updatedAt
                 + '}';
+    }
+
+    public void setAnswersList(ArrayList<String> answersList) {
+        // Add the answers to the list
+
+    }
+
+    public ArrayList<String> getAnswersList() {
+        return answersList;
     }
 
 }

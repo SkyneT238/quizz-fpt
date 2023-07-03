@@ -13,6 +13,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.net.URLEncoder;
+import java.util.Arrays;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
@@ -45,8 +46,15 @@ public class LoginServlet extends HttpServlet {
         cRemember.setMaxAge(0);
         //request.getSession().setAttribute("lang", "es_ES");
         //String localeParam =(String) request.getSession().getAttribute("lang");
-        String currenLocal = (String)request.getSession().getAttribute("lang");
-        Locale localeParam = new Locale(currenLocal!=null ? currenLocal : "en");
+        
+        Cookie langCookie = Arrays.stream(request.getCookies())
+        .filter(cookie -> "lang".equals(cookie.getName()))
+        .findFirst()
+        .orElse(null);  
+        
+        
+        String currentLang = (langCookie != null) ? langCookie.getValue() : null;
+        Locale localeParam = new Locale(currentLang!=null ? currentLang : "en");
         ResourceBundle bundle = ResourceBundle.getBundle("bundle.bundle",localeParam);
         System.out.println(localeParam);
         try {

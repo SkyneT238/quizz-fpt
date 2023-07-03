@@ -1,13 +1,6 @@
-
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <% response.setCharacterEncoding("UTF-8"); %>
 <%@ include file="/includes/header.jsp" %>
-<%
-    String courseID = request.getParameter("courseID");
-    String courseName = request.getParameter("courseName");
-    String courseImg = request.getParameter("courseImg");
-%>
 
 <!DOCTYPE html>
 <html>
@@ -22,12 +15,12 @@
                 <%@ include file="/includes/sidebar.jsp" %>
                 <div class="body">
                     <div class="body__header">
-                        <h1 class="body__header-title"> <%= courseName%> quiz</h1>
+                        <h1 class="body__header-title"> ${cInfo.courseName} quiz</h1>
                         <p class="body__header-desc">Answer the question below</p>
                     </div>
                     <div class="body__quiz">
                         <div class="body__quiz-img">
-                            <img src="<%= courseImg %>" alt="Course Image"  />
+                            <img src="${cInfo.courseImg}" alt="Course Image"  />
                         </div>
                         <div class="body__quiz-content">
                             <div class="quiz-item">
@@ -39,26 +32,24 @@
                                          String formattedTime = dateFormat.format(currentTime);
                                     %>
                                     <p><%= formattedTime %></p>
-
-
                                 </div>
                             </div>  
                             <div class="quiz-item">
-                                <div class="quiz-item-title">Date:</div>
+                                <div class="quiz-item-title">Time limit:</div>
                                 <div class="quiz-item-desc">
-                                    26/6/2023
+                                   30mins
                                 </div>
                             </div>  
                             <div class="quiz-item">
-                                <div class="quiz-item-title">Date:</div>
+                                <div class="quiz-item-title">Attempt:</div>
                                 <div class="quiz-item-desc">
-                                    26/6/2023
+                                   Once
                                 </div>
                             </div>  
                             <div class="quiz-item">
-                                <div class="quiz-item-title">Date:</div>
+                                <div class="quiz-item-title">Points:</div>
                                 <div class="quiz-item-desc">
-                                    26/6/2023
+                                    200points
                                 </div>
                             </div>
                         </div>
@@ -70,8 +61,7 @@
                         <div class="body__instruct-desc"> Timing - You need to complete each of your attempts in one sitting, as you are allotted 30 minutes to each attempt.
                             Answers - You may review your answer-choices and compare them to the correct answers after your final attempt.</div>
                         <div class="body__instruct-desc">  To start, click the "Start" button. When finished, click the "Submit " button..</div>
-                        <a href="quizView.jsp?courseID=<%= courseID%>&courseName=<%= courseName%>&courseImg=<%= courseImg%>" class="body__submit-btn">Start quiz</a>
-
+                        <a href="quiz?courseID=${cInfo.courseID}" class="body__submit-btn">Start quiz</a>
                     </div>
                 </div>
         </section>

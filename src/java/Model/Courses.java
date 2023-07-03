@@ -1,17 +1,19 @@
-
 package Model;
 
 
 public class Courses {
     private int courseID;
     private String courseName;
+    private String courseInfo;
     private String courseImg;
+    
    
     public Courses(){}
 
-    public Courses(int courseID, String courseName, String courseImg) {
+    public Courses(int courseID, String courseName, String courseInfo, String courseImg) {
         this.courseID = courseID;
         this.courseName = courseName;
+        this.courseInfo = courseInfo;
         this.courseImg = courseImg;
     }
 
@@ -31,6 +33,14 @@ public class Courses {
         this.courseName = courseName;
     }
 
+    public String getCourseInfo() {
+        return courseInfo;
+    }
+
+    public void setCourseInfo(String courseInfo) {
+        this.courseInfo = courseInfo;
+    }
+
     public String getCourseImg() {
         return courseImg;
     }
@@ -41,8 +51,9 @@ public class Courses {
 
     @Override
     public String toString() {
-        return "Courses{" + "courseID=" + courseID + ", courseName=" + courseName + ", courseImg=" + courseImg + '}';
+        return "Courses{" + "courseID=" + courseID + ", courseName=" + courseName + ", courseInfo=" + courseInfo + ", courseImg=" + courseImg + '}';
     }
-   
     
+    
+
 }

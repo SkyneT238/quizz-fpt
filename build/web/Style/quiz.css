@@ -124,7 +124,7 @@ section{
 .ans-item {
   border-radius: 30px;
   cursor: pointer;
-  max-width: 400px;
+  max-width: 500px;
   display: flex;
   gap: 20px;
   align-items: center;

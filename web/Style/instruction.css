@@ -82,6 +82,8 @@ section{
 }
 
 .quiz-item-title {
+    max-width: 200px;
+    width: 100%;
     font-weight: 600;
     font-size: 20px;
     line-height: 34px;

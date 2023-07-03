@@ -5,24 +5,40 @@
         <servlet-class>Controller.LoginServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>QuizServlet</servlet-name>
-        <servlet-class>Controller.QuizServlet</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>HomeServlet</servlet-name>
         <servlet-class>Controller.HomeServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ChangeLanguage</servlet-name>
+        <servlet-class>Controller.ChangeLanguage</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>InstructionServlet</servlet-name>
+        <servlet-class>Controller.InstructionServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>QuizServlet</servlet-name>
+        <servlet-class>Controller.QuizServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LogoutServlet</servlet-name>
         <url-pattern>/logout</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>QuizServlet</servlet-name>
-        <url-pattern>/quiz</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>HomeServlet</servlet-name>
         <url-pattern>/home</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ChangeLanguage</servlet-name>
+        <url-pattern>/language</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>InstructionServlet</servlet-name>
+        <url-pattern>/instruction</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>QuizServlet</servlet-name>
+        <url-pattern>/quiz</url-pattern>
     </servlet-mapping>
     <mime-mapping>
         <extension>css</extension>
@@ -51,5 +67,5 @@
     <servlet-mapping>
         <servlet-name>CoursesServlet</servlet-name>
         <url-pattern>/courses</url-pattern>
-    </servlet-mapping>   
+    </servlet-mapping>
 </web-app>
