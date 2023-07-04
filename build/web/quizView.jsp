@@ -14,50 +14,79 @@
     <body>
         <section>
             <div class="view">
-                <%@ include file="/includes/sidebar.jsp" %>
                 <div class="body">
                     <div class="body__header">
-                            <h1 class="body__header-title">${cInfo.courseName} Quiz!</h1>
-                            <p class="body__header-desc">Answer the question below</p>
-                        </div>
-                    <c:forEach var="question" items="${ques}" varStatus="loop">                  
-                        <div class="body__quiz">
-                            <div class="body__quiz-img">
-                                <img class="body__quiz-img" src="${cInfo.courseImg}" alt="Course Image" />
-                            </div>
-                            <div class="body__quiz-content">
-                                <div class="quiz-item">
-                                    <div class="quiz-item-title">Question ${loop.index + 1}/5</div>
-                                    <div class="quiz-item-desc"> ${question.questionContent}                            
+                        <h1 class="body__header-title">${cInfo.courseName} Quiz!</h1>
+                        <p class="body__header-desc">Answer the question below</p>
+                    </div>
+                    <c:set var="page" value="${requestScope.page}" />
+                    <form action="quiz" method="GET">
+                        <c:forEach var="i" begin="${1}" end="${requestScope.num}">
+                            <input type="hidden" name="prePage" value="${page}">
+                            <button type="submit" name="page" value="${i}">${i}</button>
+                        </c:forEach>
+
+                        <c:forEach var="question" items="${data}">
+                            <div class="body__quiz">
+                                <div class="body__quiz-content">
+                                    <div class="quiz-item">
+                                        <div class="quiz-item-title">Question ${requestScope.page}/${requestScope.num}</div>
+                                        <div class="quiz-item-desc">${question.questionContent}</div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="body__ans">
-                            <div class="body__ans-title">Choose an answer</div>
-                            <div class="body__ans-choose">                
-                                <div class="ans-item">
-                                    <div class="ans-item-circle"></div>
-                                    <p class="ans-item-text">${question.answersList[0]}</p>
-                                </div>
-                                <div class="ans-item">
-                                    <div class="ans-item-circle"></div>
-                                    <p class="ans-item-text">${question.answersList[1]}</p>
-                                </div>
-                                <div class="ans-item">
-                                    <div class="ans-item-circle"></div>
-                                    <p class="ans-item-text">${question.answersList[2]}</p>
-                                </div>
-                                <div class="ans-item">
-                                    <div class="ans-item-circle"></div>
-                                    <p class="ans-item-text">${question.answersList[3]}</p>
+
+                            <div class="body__ans">
+                                <div class="body__ans-title">Choose an answer</div>
+                                <div class="body__ans-choose">
+                                    <c:forEach var="answer" items="${question.answersList}" varStatus="loop">
+                                        <div class="ans-item">
+                                            <input type="radio" name="answer_${loop.count}" value="${answer}" ${sessionScope.ans[page-1] == answer ?"checked" : "" }  />${answer}  <br />
+                                        </div>
+                                    </c:forEach>
                                 </div>
                             </div>
-                        </div>
-                        <button class="body__submit-btn">Submit</button>
-                    </c:forEach>
+                        </c:forEach>
+                    </form>
                 </div>
             </div>
         </section>
     </body>
+
+    <script>
+        const ansItems = document.querySelectorAll('.ans-item');
+        ansItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const isSelected = item.classList.contains('selected');
+                ansItems.forEach(item => {
+                    item.classList.remove('selected');
+                    item.querySelector('input[type="radio"]').checked = false;
+                });
+                if (!isSelected) {
+                    item.classList.add('selected');
+                    item.querySelector('input[type="radio"]').checked = true;
+                }
+            });
+        });
+        window.onload = function () {
+            const radioButtons = document.querySelectorAll('input[type="radio"]');
+
+            radioButtons.forEach(function (radioButton) {
+                if (radioButton.checked) {
+                    const ansItem = radioButton.parentNode;
+                    ansItem.classList.add('selected');
+                }
+            });
+        };
+
+    </script>
+
+    <style>
+        .selected {
+            background-color: #00FF00;
+        }
+
+    </style>
+
+
 </html>

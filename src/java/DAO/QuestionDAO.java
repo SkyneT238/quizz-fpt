@@ -37,6 +37,8 @@ public class QuestionDAO {
         }
         return list;
     }
+    
+    
      public static void main(String[] args) {
         QuestionDAO dao = new QuestionDAO();
         List<Question> list = dao.getQuestion(1);
