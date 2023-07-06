@@ -1,22 +1,35 @@
-
-
 package Model;
 
 public class Account {
+
     private int userID;
     private String username;
     private String password;
     private String email;
     private int point;
     private int rankID;
-    
-    public Account(){}
+    private String contactnumber;
+    private String fullname;
+
+    public Account() {
+    }
 
     public Account(int userID, String username, String password, String email, int point, int rankID) {
         this.userID = userID;
         this.username = username;
         this.password = password;
         this.email = email;
+        this.point = point;
+        this.rankID = rankID;
+    }
+
+    public Account(int userID, String username, String fullname, String email, String contactnumber, String password, int point, int rankID) {
+        this.userID = userID;
+        this.username = username;
+        this.fullname = fullname;
+        this.email = email;
+        this.contactnumber = contactnumber;
+        this.password = password;
         this.point = point;
         this.rankID = rankID;
     }
@@ -68,7 +81,21 @@ public class Account {
     public void setRankID(int rankID) {
         this.rankID = rankID;
     }
-    
 
+    public String getContactnumber() {
+        return contactnumber;
+    }
+
+    public void setContactnumber(String contactnumber) {
+        this.contactnumber = contactnumber;
+    }
+
+    public String getFullname() {
+        return fullname;
+    }
+
+    public void setFullname(String fullname) {
+        this.fullname = fullname;
+    }
     
 }

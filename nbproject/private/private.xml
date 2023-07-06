@@ -14,6 +14,7 @@
             <file>file:/E:/NetBean/quizz-fpt/src/java/DAO/DashBoardDAO.java</file>
             <file>file:/E:/NetBean/quizz-fpt/web/Style/instruction.css</file>
             <file>file:/E:/NetBean/quizz-fpt/src/java/Controller/QuizServlet.java</file>
+            <file>file:/E:/NetBean/quizz-fpt/src/java/DAO/CourseDAO.java</file>
             <file>file:/E:/NetBean/quizz-fpt/src/java/Controller/ChangeLanguage.java</file>
             <file>file:/E:/NetBean/quizz-fpt/src/java/Controller/HomeServlet.java</file>
             <file>file:/E:/NetBean/quizz-fpt/web/includes/header.jsp</file>
@@ -23,6 +24,8 @@
             <file>file:/E:/NetBean/quizz-fpt/web/dashboardView.jsp</file>
             <file>file:/E:/NetBean/quizz-fpt/src/java/bundle/bundle_en.properties</file>
             <file>file:/E:/NetBean/quizz-fpt/src/java/DAO/LoginDAO.java</file>
+            <file>file:/E:/NetBean/quizz-fpt/web/js/countDown.js</file>
+            <file>file:/E:/NetBean/quizz-fpt/web/includes/countDown.jsp</file>
             <file>file:/E:/NetBean/quizz-fpt/src/java/Controller/InstructionServlet.java</file>
             <file>file:/E:/NetBean/quizz-fpt/web/META-INF/context.xml</file>
             <file>file:/E:/NetBean/quizz-fpt/web/coursesView.jsp</file>

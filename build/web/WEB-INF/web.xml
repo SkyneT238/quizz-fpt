@@ -20,6 +20,10 @@
         <servlet-name>QuizServlet</servlet-name>
         <servlet-class>Controller.QuizServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>UpdateProfile</servlet-name>
+        <servlet-class>Controller.UpdateProfile</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LogoutServlet</servlet-name>
         <url-pattern>/logout</url-pattern>
@@ -39,6 +43,10 @@
     <servlet-mapping>
         <servlet-name>QuizServlet</servlet-name>
         <url-pattern>/quiz</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateProfile</servlet-name>
+        <url-pattern>/updateInfo</url-pattern>
     </servlet-mapping>
     <mime-mapping>
         <extension>css</extension>
