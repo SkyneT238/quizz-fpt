@@ -39,20 +39,20 @@
                             <div style="border-left: 0" class="table-col">Created At</div>
                         </div>
                         <div class="table-row">
-                            <div style="border-top: 0" class="table-col">1</div>                           
-                            <div style="border-left: 0;border-top: 0" class="table-col">De170123</div>
-                            <div style="border-left: 0;border-top: 0" class="table-col">Cea201</div>
-                            <div style="border-left: 0;border-top: 0" class="table-col">60</div>
-                            <div style="border-left: 0;border-top: 0" class="table-col">8/10</div>
-                            <div style="border-left: 0;border-top: 0" class="table-col">80</div>
-                            <div style="border-left: 0;border-top: 0" class="table-col">12:40:31</div>
+                            <div style="border-top: 0" class="table-col">${testID}</div>                           
+                            <div style="border-left: 0;border-top: 0" class="table-col">${user.username}</div>
+                            <div style="border-left: 0;border-top: 0" class="table-col">${courseID}</div>
+                            <div style="border-left: 0;border-top: 0" class="table-col">${time}</div>
+                            <div style="border-left: 0;border-top: 0" class="table-col">${corrected}</div>
+                            <div style="border-left: 0;border-top: 0" class="table-col">${point}</div>
+                            <div style="border-left: 0;border-top: 0" class="table-col">${start}</div>
                         </div>
                     </div>
                     <div class=""></div>
                 </div>
             </div>
         </section>
-    </body>
+</body>
 </html>
 
 

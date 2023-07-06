@@ -67,7 +67,7 @@
                         <div class="body__instruct-desc"> Timing - You need to complete each of your attempts in one sitting, as you are allotted 30 minutes to each attempt.
                             Answers - You may review your answer-choices and compare them to the correct answers after your final attempt.</div>
                         <div class="body__instruct-desc">  To start, click the "Start" button. When finished, click the "Submit " button..</div>
-                        <a href="quiz?courseID=${cInfo.courseID}" class="body__submit-btn">Start quiz</a>
+                        <a href="create?courseID=${cInfo.courseID}" class="body__submit-btn">Start quiz</a>
                     </div>
                 </div>
         </section>

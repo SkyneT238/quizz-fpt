@@ -1,5 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="6.0" xmlns="https://jakarta.ee/xml/ns/jakartaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd">
+    <filter>
+        <filter-name>LoginFiller</filter-name>
+        <filter-class>Filler.LoginFiller</filter-class>
+    </filter>
+    <filter>
+        <filter-name>QuizzFiller</filter-name>
+        <filter-class>Filler.QuizzFiller</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>LoginFiller</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>QuizzFiller</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
     <servlet>
         <servlet-name>LoginServlet</servlet-name>
         <servlet-class>Controller.LoginServlet</servlet-class>
@@ -24,6 +40,14 @@
         <servlet-name>UpdateProfile</servlet-name>
         <servlet-class>Controller.UpdateProfile</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CreateTest</servlet-name>
+        <servlet-class>Controller.CreateTest</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ResultData</servlet-name>
+        <servlet-class>Controller.ResultData</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LogoutServlet</servlet-name>
         <url-pattern>/logout</url-pattern>
@@ -47,6 +71,14 @@
     <servlet-mapping>
         <servlet-name>UpdateProfile</servlet-name>
         <url-pattern>/updateInfo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CreateTest</servlet-name>
+        <url-pattern>/create</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ResultData</servlet-name>
+        <url-pattern>/result</url-pattern>
     </servlet-mapping>
     <mime-mapping>
         <extension>css</extension>

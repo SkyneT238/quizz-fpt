@@ -7,15 +7,13 @@ package Controller;
 import DAO.QuestionDAO;
 import Model.Question;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
 
 public class QuizServlet extends HttpServlet {
@@ -23,36 +21,37 @@ public class QuizServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-
+        
+       
+        int page, numPerPage = 1;
         List<Question> questions = (List<Question>) request.getSession().getAttribute("exam");
         List<String> ans = (List<String>) request.getSession().getAttribute("ans");
-        int page, numPerPage = 1;
-      
-     
         String currenPage = request.getParameter("page");
+        int prePage = request.getParameter("prePage") == null ? 1 : Integer.parseInt(request.getParameter("prePage"));
         
-        if (questions == null) {
-            String courseIdParam = request.getParameter("courseID");
-            int courseId = Integer.parseInt(courseIdParam);
-            QuestionDAO dao = new QuestionDAO();
-            questions = dao.getQuestion(courseId);
-            request.getSession().setAttribute("exam", questions);
+            if(request.getParameter("status")!=null && request.getParameter("status").contains("end"))
+        {
+              ans.set(Integer.parseInt(request.getParameter("page")) -1, request.getParameter("key"));
+            request.getSession().setAttribute("time", request.getParameter("time"));
+             request.getRequestDispatcher("result").forward(request, response);
         }
-        
+            
         int size = questions.size();
-       int num = (size % numPerPage == 0 ? (size / numPerPage) : ((size / numPerPage) + 1));
-        if (ans == null) {
-            ans = new ArrayList<>(Collections.nCopies(size, null));
-        }
-
+        int num = (size % numPerPage == 0 ? (size / numPerPage) : ((size / numPerPage) + 1));
+        
+       
+          
+        
         if (currenPage == null) {
             page = 1;
         } else {
             page = Integer.parseInt(currenPage);
         }
-        int prePage = request.getParameter("prePage") == null ? 1 : Integer.parseInt(request.getParameter("prePage"));
-        ans.set(prePage-1, getAns(request));
+     
+        ans.set(prePage -1, getAns(request));
         request.getSession().setAttribute("ans", ans);
+        
+      
 
         int start = (page - 1) * numPerPage;
         int end = Math.min(page * numPerPage, size);
@@ -62,7 +61,7 @@ public class QuizServlet extends HttpServlet {
         request.setAttribute("data", listOfPage);
         request.setAttribute("page", page);
         request.setAttribute("num", num);
-        System.out.println(ans.toString());
+        
         request.getRequestDispatcher("quizView.jsp").forward(request, response);
     }
 
