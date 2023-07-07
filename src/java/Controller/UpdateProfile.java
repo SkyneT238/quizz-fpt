@@ -13,9 +13,10 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+
 /**
  *
- * @author vohuy
+ * @author ducnl
  */
 public class UpdateProfile extends HttpServlet {
 
@@ -31,18 +32,14 @@ public class UpdateProfile extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet UpdateProfile</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet UpdateProfile at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
+        Account account = (Account) request.getSession().getAttribute("user");
+        int userID = account.getUserID();
+        String fullname = request.getParameter("fullname");
+        String contactnumber = request.getParameter("contactnumber");
+        AccountDAO dao = new AccountDAO();
+        Account updatedInfo = dao.updateAccount(userID, fullname, contactnumber);
+        request.getSession().setAttribute("user", updatedInfo);
+        request.getRequestDispatcher("dashboardView.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -71,46 +68,7 @@ public class UpdateProfile extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Account account = (Account) request.getSession().getAttribute("user");
-        int userID = account.getUserID();
-        String fullname = request.getParameter("fullname");
-        String contactnumber = request.getParameter("contactnumber");
-        String oldpass = request.getParameter("oldpassword");
-        String newpass = request.getParameter("newpassword");
-        AccountDAO dao = new AccountDAO();
-        Account a = dao.updateAccount(userID, fullname, contactnumber);
-        if (oldpass != null && !oldpass.isEmpty()) {
-            // Kiểm tra mật khẩu cũ
-            if (dao.checkPassword(userID, oldpass)) {
-                // Cập nhật thông tin người dùng khác (ví dụ: tên đầy đủ, số điện thoại)
-                Account updatedAccount = dao.updateAccount(userID, fullname, contactnumber);
-
-                // Cập nhật thông tin người dùng trong session
-                request.getSession().setAttribute("user", updatedAccount);
-
-                // Thực hiện thay đổi mật khẩu nếu newpass được nhập
-                if (newpass != null && !newpass.isEmpty()) {
-                    dao.changePassword(userID, newpass);
-                }
-
-                // Chuyển hướng đến trang hiển thị thông tin người dùng
-                request.getSession().setAttribute("user", updatedAccount);
-                request.getRequestDispatcher("profileView.jsp").forward(request, response);
-            } else {
-                // Hiển thị thông báo lỗi hoặc chuyển hướng đến trang thông báo lỗi
-                response.sendRedirect("error.jsp");
-            }
-        } else {
-            // Không thực hiện thay đổi mật khẩu nếu không nhập oldpass
-            // Cập nhật thông tin người dùng khác (ví dụ: tên đầy đủ, số điện thoại)
-            Account updatedAccount = dao.updateAccount(userID, fullname, contactnumber);
-
-            // Cập nhật thông tin người dùng trong session
-            request.getSession().setAttribute("user", updatedAccount);
-
-            // Chuyển hướng đến trang hiển thị thông tin người dùng
-            request.getRequestDispatcher("profileView.jsp").forward(request, response);
-        }
+        processRequest(request, response);
     }
 
     /**

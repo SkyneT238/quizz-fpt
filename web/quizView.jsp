@@ -3,7 +3,9 @@
 <%@ include file="/includes/header.jsp" %>
 
 <%@ page import="java.util.List" %>
-
+<%
+    response.setHeader("Cache-Control", "no-store");
+%>
 <!DOCTYPE html>
 <html>
     <head>

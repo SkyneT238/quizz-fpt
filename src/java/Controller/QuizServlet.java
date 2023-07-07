@@ -22,9 +22,12 @@ public class QuizServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
-       
+      
         int page, numPerPage = 1;
         List<Question> questions = (List<Question>) request.getSession().getAttribute("exam");
+        String check = (String) request.getSession().getAttribute("ok");
+        if(check!=null)     if(check.compareTo("true")==1) request.getRequestDispatcher("result").forward(request, response);
+     
         List<String> ans = (List<String>) request.getSession().getAttribute("ans");
         String currenPage = request.getParameter("page");
         int prePage = request.getParameter("prePage") == null ? 1 : Integer.parseInt(request.getParameter("prePage"));

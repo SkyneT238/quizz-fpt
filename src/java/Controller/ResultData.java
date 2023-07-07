@@ -53,7 +53,8 @@ public class ResultData extends HttpServlet {
         request.getSession().setAttribute("corrected", correctAns + "/" + questions.size());
         request.getSession().setAttribute("point", correctAns * 10);
         System.out.println(correctAns);
-
+        
+        request.getSession().setAttribute("ok", "true");
         request.getSession().removeAttribute("exam");
         request.getSession().removeAttribute("ans");
         request.getSession().removeAttribute("page");

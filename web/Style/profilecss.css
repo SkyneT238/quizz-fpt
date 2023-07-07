@@ -32,7 +32,7 @@ section{
     padding: 20px;
 }
 
-.header {
+.form-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -105,9 +105,9 @@ section{
     width: 210px;
     height: 55px;
     border-radius: 5px;
-    border: 2px solid #FF7008;
+    border: 2px solid #F65151;
     background: #FFF;
-    color: #FF7008;
+    color: #F65151;
     font-size: 16px;
     font-weight: bold;
     cursor: pointer;
@@ -119,6 +119,6 @@ section{
 }
 
 .button:hover {
-    background-color: #FF7008;
+    background-color: #F65151;
     color: #FFF;
 }
