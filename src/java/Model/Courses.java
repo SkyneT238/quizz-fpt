@@ -16,6 +16,14 @@ public class Courses {
         this.courseInfo = courseInfo;
         this.courseImg = courseImg;
     }
+
+    public Courses(String courseName, String courseInfo, String courseImg) {
+        this.courseName = courseName;
+        this.courseInfo = courseInfo;
+        this.courseImg = courseImg;
+    }
+    
+    
     
     
      public double getSimilarityScore() {

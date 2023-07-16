@@ -60,6 +60,10 @@
         <servlet-name>SearchServlet</servlet-name>
         <servlet-class>Controller.SearchServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AddCourse</servlet-name>
+        <servlet-class>Controller.AddCourse</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LogoutServlet</servlet-name>
         <url-pattern>/logout</url-pattern>
@@ -103,6 +107,10 @@
     <servlet-mapping>
         <servlet-name>SearchServlet</servlet-name>
         <url-pattern>/search</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddCourse</servlet-name>
+        <url-pattern>/addcourse</url-pattern>
     </servlet-mapping>
     <mime-mapping>
         <extension>css</extension>

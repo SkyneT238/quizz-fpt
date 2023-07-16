@@ -38,13 +38,24 @@ public class QuestionDAO {
         return list;
     }
     
-    
+    public void addQuestion(Question ques)
+    {
+             List<Question> list = new ArrayList<>();
+         String query = "SELECT MAX(questionID) AS lastQuestionID FROM tblQuestion";
+        try {
+            conn = (Connection) new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                  System.out.println(rs.getInt("lastQuestionID"));
+            }
+        } catch (Exception e) {
+
+        }
+    }
      public static void main(String[] args) {
         QuestionDAO dao = new QuestionDAO();
-        List<Question> list = dao.getQuestion(1);
-        for (Question c : list) {
-            System.out.println(c);
-        }
+        dao.addQuestion(null);
 
     }
 
