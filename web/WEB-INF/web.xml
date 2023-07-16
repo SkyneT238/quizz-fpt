@@ -64,6 +64,10 @@
         <servlet-name>AddCourse</servlet-name>
         <servlet-class>Controller.AddCourse</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AddQuestion</servlet-name>
+        <servlet-class>Controller.AddQuestion</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LogoutServlet</servlet-name>
         <url-pattern>/logout</url-pattern>
@@ -111,6 +115,10 @@
     <servlet-mapping>
         <servlet-name>AddCourse</servlet-name>
         <url-pattern>/addcourse</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddQuestion</servlet-name>
+        <url-pattern>/addquest</url-pattern>
     </servlet-mapping>
     <mime-mapping>
         <extension>css</extension>

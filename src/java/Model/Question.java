@@ -44,6 +44,20 @@ public class Question {
         Collections.shuffle(answersList);
     }
 
+    public Question(int collectionID, String questionContent, String difficulty, String answer1, String answer2, String answer3, String correctAnswer, Date createdAt, Date updatedAt) {
+        this.collectionID = collectionID;
+        this.questionContent = questionContent;
+        this.difficulty = difficulty;
+        this.answer1 = answer1;
+        this.answer2 = answer2;
+        this.answer3 = answer3;
+        this.correctAnswer = correctAnswer;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+    }
+    
+    
+
     public Question() {
     }
 

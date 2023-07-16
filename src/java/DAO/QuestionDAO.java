@@ -1,4 +1,5 @@
 package DAO;
+
 import Model.Answer;
 import Model.Question;
 import context.DBContext;
@@ -23,7 +24,7 @@ public class QuestionDAO {
         try {
             conn = (Connection) new DBContext().getConnection();
             ps = conn.prepareStatement(query);
-            ps.setInt(1,id);
+            ps.setInt(1, id);
             rs = ps.executeQuery();
             while (rs.next()) {
                 int questionId = rs.getInt("questionID");
@@ -37,25 +38,66 @@ public class QuestionDAO {
         }
         return list;
     }
-    
-    public void addQuestion(Question ques)
-    {
-             List<Question> list = new ArrayList<>();
-         String query = "SELECT MAX(questionID) AS lastQuestionID FROM tblQuestion";
+
+    public int getPlace() {
+        String query = "SELECT MAX(questionID) AS lastQuestionID FROM tblQuestion";
         try {
             conn = (Connection) new DBContext().getConnection();
             ps = conn.prepareStatement(query);
             rs = ps.executeQuery();
             while (rs.next()) {
-                  System.out.println(rs.getInt("lastQuestionID"));
+                return rs.getInt("lastQuestionID") + 1;
             }
         } catch (Exception e) {
 
         }
+        return 0;
     }
-     public static void main(String[] args) {
+
+    public int getCate(String cate) {
+        String query = "Select collectionID  from tblQuestionCollection where collectionName = ?";
+        try {
+            conn = (Connection) new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, cate);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (Exception e) {
+
+        }
+        return 0;
+    }
+
+    public void addQuest(Question question, int index) {
+        try {
+            String query = "INSERT INTO tblQuestion(questionID,collectionID,questionContent,difficulty,answer1,answer2,answer3,correctAnswer,createdAt,updatedAt) \n"
+                    + "VALUES \n"
+                    + "    (?, ?, ?, ?, ?,?,?,?,?,?);";
+            conn = (Connection) new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, index);
+            ps.setInt(2, question.getCollectionID());
+            ps.setString(3, question.getQuestionContent());
+            ps.setString(4, question.getDifficulty());
+            ps.setString(5, question.getAnswer1());
+            ps.setString(6, question.getAnswer2());
+            ps.setString(7, question.getAnswer3());
+            ps.setString(8, question.getCorrectAnswer());
+            ps.setTimestamp(9, new Timestamp(question.getCreatedAt().getTime()));
+            ps.setTimestamp(10, new Timestamp(question.getUpdatedAt().getTime()));
+
+            ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public static void main(String[] args) {
         QuestionDAO dao = new QuestionDAO();
-        dao.addQuestion(null);
+        System.out.println(dao.getCate("CEA201"));
 
     }
 

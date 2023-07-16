@@ -89,8 +89,9 @@ public class CourseDAO {
             ps.setString(3, course.getCourseImg());
             ps.executeUpdate();
         } catch (Exception e) {
-
+            e.printStackTrace();
         }
+
     }
 
     public static void main(String[] args) {
