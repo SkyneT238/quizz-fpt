@@ -3,7 +3,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <jsp:useBean id="c" class="DAO.CourseDAO" scope="request"></jsp:useBean>
 <% response.setCharacterEncoding("UTF-8"); %>
-
 <c:set var="lang" value="${cookie.lang.value}" />
 <fmt:setLocale value="${lang}" scope="session" />
 <fmt:setBundle basename="bundle.bundle" />
@@ -21,20 +20,26 @@
         <title>Dashboard</title>
         <link rel="stylesheet" type="text/css" href="Style/dashboardCss.css">
     </head>
-    <%@ include file="/includes/header.jsp" %>
+    <%@ include file="/includes/header_admin.jsp" %>
+    <%
+    response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+    if (session.getAttribute("user") == null) {
+        response.sendRedirect("login.jsp");
+    }
+%>
 
     <body>
         <section >
             <div class="view">
-                <%@ include file="/includes/sidebar.jsp" %>
+                <%@ include file="/includes/sidebar_admin.jsp" %>
                 <div class="body">
                     <div class="body__user">
                         <img class="user__data-img" src="assets/avatar.svg" />
 
                         <div class="user__data-content">
                             <div class="data-info">
-                                <div class="data-info-name">${user.username}</div>
-                                <div class="data-info-type"><fmt:message key="login.tiltle.big"/></div>
+                                <div class="data-info-name">${user.fullname}</div>
+                                <div class="data-info-type">${user.username}</div>
                             </div>
                             <div class="user__data-process">
                                 <div class="data-progress-bar"></div>

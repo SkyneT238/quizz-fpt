@@ -7,8 +7,8 @@
             <minimum-ant-version>1.6.5</minimum-ant-version>
             <web-module-libraries>
                 <library dirs="200">
-                    <file>${file.reference.mssql-jdbc-8.2.2.jre11.jar}</file>
-                    <path-in-war>WEB-INF/lib</path-in-war>
+                    <file>${file.reference.java-bundle}</file>
+                    <path-in-war>WEB-INF/classes</path-in-war>
                 </library>
                 <library dirs="200">
                     <file>${file.reference.jakarta.servlet.jsp.jstl-2.0.0.jar}</file>
@@ -19,8 +19,8 @@
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
                 <library dirs="200">
-                    <file>${file.reference.java-bundle}</file>
-                    <path-in-war>WEB-INF/classes</path-in-war>
+                    <file>${file.reference.mssql-jdbc-8.2.2.jre11.jar}</file>
+                    <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
             </web-module-libraries>
             <web-module-additional-libraries/>

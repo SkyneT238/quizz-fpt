@@ -14,14 +14,6 @@ public class Account {
     public Account() {
     }
 
-    public Account(int userID, String username, String password, String email, int point, int rankID) {
-        this.userID = userID;
-        this.username = username;
-        this.password = password;
-        this.email = email;
-        this.point = point;
-        this.rankID = rankID;
-    }
 
     public Account(int userID, String username, String fullname, String email, String contactnumber, String password, int point, int rankID) {
         this.userID = userID;

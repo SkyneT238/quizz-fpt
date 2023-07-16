@@ -21,40 +21,37 @@ public class QuizServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
-      
+                    
         int page, numPerPage = 1;
         List<Question> questions = (List<Question>) request.getSession().getAttribute("exam");
         String check = (String) request.getSession().getAttribute("ok");
-        if(check!=null)     if(check.compareTo("true")==1) request.getRequestDispatcher("result").forward(request, response);
-     
+        if (check != null) {
+            if (check.compareTo("true") == 1) {
+                request.getRequestDispatcher("result").forward(request, response);
+            }
+        }
+
         List<String> ans = (List<String>) request.getSession().getAttribute("ans");
         String currenPage = request.getParameter("page");
         int prePage = request.getParameter("prePage") == null ? 1 : Integer.parseInt(request.getParameter("prePage"));
-        
-            if(request.getParameter("status")!=null && request.getParameter("status").contains("end"))
-        {
-              ans.set(Integer.parseInt(request.getParameter("page")) -1, request.getParameter("key"));
+
+        if (request.getParameter("status") != null && request.getParameter("status").contains("end")) {
+            ans.set(Integer.parseInt(request.getParameter("page")) - 1, request.getParameter("key"));
             request.getSession().setAttribute("time", request.getParameter("time"));
-             request.getRequestDispatcher("result").forward(request, response);
+            request.getRequestDispatcher("result").forward(request, response);
         }
-            
+
         int size = questions.size();
         int num = (size % numPerPage == 0 ? (size / numPerPage) : ((size / numPerPage) + 1));
-        
-       
-          
-        
+
         if (currenPage == null) {
             page = 1;
         } else {
             page = Integer.parseInt(currenPage);
         }
-     
-        ans.set(prePage -1, getAns(request));
+
+        ans.set(prePage - 1, getAns(request));
         request.getSession().setAttribute("ans", ans);
-        
-      
 
         int start = (page - 1) * numPerPage;
         int end = Math.min(page * numPerPage, size);
@@ -64,7 +61,6 @@ public class QuizServlet extends HttpServlet {
         request.setAttribute("data", listOfPage);
         request.setAttribute("page", page);
         request.setAttribute("num", num);
-        
         request.getRequestDispatcher("quizView.jsp").forward(request, response);
     }
 

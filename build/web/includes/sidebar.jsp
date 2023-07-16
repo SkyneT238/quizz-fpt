@@ -33,6 +33,10 @@
                 <i class=" sidebar__item-icon fa-solid fa-gamepad"></i>
                 <a href="courses" class="sidebar__item-list"><fmt:message key="nav.left.quiz"/></a>
             </div>
+             <div class="sidebar__item">
+               <i class="sidebar__item-icon fa-solid fa-clock-rotate-left"></i>
+                <a href="history" class="sidebar__item-list"><fmt:message key="nav.left.history"/></a>
+            </div>
             <div class="sidebar__item">
                 <i class=" sidebar__item-icon fa-solid fa-headset"></i>
                 <a href="#" class="sidebar__item-list"><fmt:message key="nav.left.support"/></a>
@@ -40,6 +44,7 @@
             <div class="sidebar__item">
                 <i class=" sidebar__item-icon fa-solid fa-bell"></i>
                 <a href="#" class="sidebar__item-list"><fmt:message key="nav.left.notification"/></a>
+            </div>         
         </aside>
     </body>
 </html>

@@ -230,7 +230,8 @@ body {
 
 .info-link {
     color: white;
-    text-decoration: none;
+    text-decoration: none; 
+    cursor: pointer;
 }
 
 

@@ -6,7 +6,7 @@ public class Courses {
     private String courseName;
     private String courseInfo;
     private String courseImg;
-    
+      private double similarityScore;
    
     public Courses(){}
 
@@ -16,7 +16,16 @@ public class Courses {
         this.courseInfo = courseInfo;
         this.courseImg = courseImg;
     }
+    
+    
+     public double getSimilarityScore() {
+        return similarityScore;
+    }
 
+    public void setSimilarityScore(double similarityScore) {
+        this.similarityScore = similarityScore;
+    }
+    
     public int getCourseID() {
         return courseID;
     }

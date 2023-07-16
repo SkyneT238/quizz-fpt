@@ -63,7 +63,7 @@
                     </div>
                 </header>
                 <form class="form" action="language" method="post" id="settingsPopup">
-                     <input type="hidden" name="servletPath" value="${pageContext.request.servletPath}">
+                    <input type="hidden" name="servletPath" value="${pageContext.request.servletPath}">
                     <section  class="popup">
                         <div class="setting">
                             <div class="setting-header">
@@ -71,7 +71,7 @@
                                 <p class="setting-title"><fmt:message key="nav.menu.setting"/></p>
                             </div>
                             <div class ="setting-exit" onclick="exitToggleSettingsPopup()">
-                                <i style="font-size: 36px;" class="fa-solid fa-xmark"></i>
+                                <i style="font-size: 36px; cursor: pointer;" class="fa-solid fa-xmark"></i>
                             </div>
                         </div>
                         <div class="setting-body">
@@ -115,21 +115,6 @@
                                         </label>
                                     </div>
                                 </div>
-                                <!--                                <div style="flex-direction: row; display: flex; align-items: center;" class="setting-item">
-                                                                    <div style="border: none" class="setting-header">
-                                                                        <i style="color: #503a3a" class="fa-solid fa-volume-high setting-icon"></i>
-                                                                        <p class="setting-item-title">Volume:</p>
-                                                                    </div>
-                                                                    <div style="display: flex; gap: 8px;" class="setting-item-chose">
-                                                                        <div class="slider-cont">
-                                                                            <div class="slider">
-                                                                                <input type="range" min="0" max="0" value="50" - id="inputVol" />
-                                                                                <progress min="0" max="100" value="50"></progress>
-                                                                            </div>
-                                                                            <div class="sliderValue">50</div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>-->
                             </div>
                             <div class="submit-form">
                                 <input class="setting-btn" type="submit" value="<fmt:message key="setting.save"/>" />
@@ -140,4 +125,32 @@
             </div>
         </div>
     </body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+                                // Lấy phần tử input bằng cách sử dụng CSS selector
+                                var inputElement = document.querySelector('.header-search .search-input');
+
+// Lắng nghe sự kiện nhập liệu
+                                inputElement.addEventListener('input', function (event) {
+                                    var inputValue = event.target.value;
+                                    $.ajax({
+                                        url: "/QuizletFPT/search",
+                                        type: "post", //send it through get method
+                                        data: {
+                                            key: inputValue
+
+                                        },
+                                        success: function (data) {
+
+                                        },
+                                        error: function (xhr) {
+                                            //Do Something to handle error
+                                        }
+                                    });
+
+                                });
+
+
+    </script>
 </html>
+

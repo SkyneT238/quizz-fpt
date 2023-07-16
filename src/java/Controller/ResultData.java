@@ -4,8 +4,12 @@
  */
 package Controller;
 
+import DAO.TestDAO;
+import Model.Account;
 import Model.Question;
+import Model.TestRecord;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -33,30 +37,46 @@ public class ResultData extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        TestRecord test = new TestRecord();
+        Account account = (Account) request.getSession().getAttribute("user");
         LocalDateTime currentTime = LocalDateTime.now();
         List<Question> questions = (List<Question>) request.getSession().getAttribute("exam");
         List<String> ans = (List<String>) request.getSession().getAttribute("ans");
-        System.out.println(ans);
-        System.out.println(questions);
+
         // Định dạng thời gian thành chuỗi hhmmddmm
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HHmmddMM");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("mmddMM");
         String formattedTime = currentTime.format(formatter);
-        request.getSession().setAttribute("testID", formattedTime);
+        String courseID = (String) request.getSession().getAttribute("courseID");
+        String finishTime = (String) request.getSession().getAttribute("time");
+        String createdAt = (String) request.getSession().getAttribute("start");
+        String testID = account.getUserID() + courseID + formattedTime;
         int correctAns = 0;
         for (int i = 0; i < questions.size(); i++) {
             if (ans.get(i) != null && questions.get(i).getCorrectAnswer().equals(ans.get(i))) {
                 correctAns++;
             }
-
         }
 
-        request.getSession().setAttribute("corrected", correctAns + "/" + questions.size());
-        request.getSession().setAttribute("point", correctAns * 10);
-        System.out.println(correctAns);
-        
+        Cookie testing = new Cookie("testing", "0");
+        testing.setMaxAge(0);
+        response.addCookie(testing);
+
+        int point = correctAns * 20;
+        test.setTestID(Integer.parseInt(testID));
+        test.setUserID(account.getUserID());
+        test.setCollectionID(Integer.parseInt(courseID));
+        test.setFinishTime(finishTime);
+        test.setCorrectedQuestion(correctAns);
+        test.setPoint(point);
+        test.setCreatedAt(createdAt);
+        request.getSession().setAttribute("test", test);
+        TestDAO dao = new TestDAO();
+        dao.addNewRecord(test);
+
+        request.getSession().setAttribute("question", questions);
+        request.getSession().setAttribute("userchoice", ans);
         request.getSession().setAttribute("ok", "true");
         request.getSession().removeAttribute("exam");
-        request.getSession().removeAttribute("ans");
         request.getSession().removeAttribute("page");
     }
 

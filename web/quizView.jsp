@@ -1,16 +1,21 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <% response.setCharacterEncoding("UTF-8"); %>
 <%@ include file="/includes/header.jsp" %>
-
+<c:set var="lang" value="${cookie.lang.value}" />
+<fmt:setLocale value="${lang}" scope="session" />
+<fmt:setBundle basename="bundle.bundle" />
 <%@ page import="java.util.List" %>
-<%
-    response.setHeader("Cache-Control", "no-store");
-%>
 <!DOCTYPE html>
 <html>
     <head>
+        <%
+                response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+                if (session.getAttribute("exam") == null) {
+                    response.sendRedirect("login.jsp");
+                }
+        %>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Quiz Time</title>
+        <title><fmt:message key="quiz.title"/></title>
         <link rel="stylesheet" type="text/css" href="Style/quiz.css">
     </head>
     <body>
@@ -18,8 +23,8 @@
             <div style="position: relative;" class="view">
                 <div  class="body">
                     <div class="body__header">
-                        <h1 class="body__header-title">${cInfo.courseName} Quiz!</h1>
-                        <p class="body__header-desc">Answer the question below</p>
+                        <h1 class="body__header-title">${cInfo.courseName} <fmt:message key="quiz.title"/>!</h1>
+                        <p class="body__header-desc"><fmt:message key="quiz.desc"/></p>
                     </div>
                     <c:set var="page" value="${requestScope.page}" />
                     <form action="quiz" method="GET">
@@ -34,19 +39,19 @@
                                     <button id="button" style="font-size: 16px; width: 50px; height: 50px; font-weight: 600" class="${i==page?"active":""}" type="submit" name="page" value="${i}">${i}</button>
                                 </c:forEach>
                             </div>
-                            <a class="submit-quiz" onclick="endQuizz()">Submit</a>
+                            <a class="submit-quiz" onclick="endQuizz()"><fmt:message key="quiz.btn"/></a>
                         </div>
                         <c:forEach var="question" items="${data}">
                             <div class="body__quiz">
                                 <div class="body__quiz-content">
                                     <div class="quiz-item">
-                                        <div class="quiz-item-title">Question ${requestScope.page}/${requestScope.num}</div>
+                                        <div class="quiz-item-title"><fmt:message key="quiz.question"/> ${requestScope.page}/${requestScope.num}</div>
                                         <div class="quiz-item-desc">${question.questionContent}</div>
                                     </div>
                                 </div>
                             </div>
                             <div class="body__ans">
-                                <div class="body__ans-title">Choose an answer</div>
+                                <div class="body__ans-title"><fmt:message key="quiz.instruct"/></div>
                                 <div class="body__ans-choose">
                                     <c:forEach var="answer" items="${question.answersList}" varStatus="loop">
                                         <div class="ans-item">
@@ -63,7 +68,6 @@
     </body>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
-
                                 const ansItems = document.querySelectorAll('.ans-item');
                                 ansItems.forEach(item => {
                                     item.addEventListener('click', () => {
@@ -100,7 +104,7 @@
                                 function updateTimer() {
                                     var currentTime = Math.floor(Date.now() / 1000);
                                     elapsedTime = currentTime - startTime;
-                                    var remainingTime = 300 - elapsedTime; //// set time ở đêyyy
+                                    var remainingTime = 60 - elapsedTime; //// set time ở đêyyy
 
                                     if (remainingTime <= 0) {
                                         clearInterval(timerInterval);
@@ -120,8 +124,9 @@
                                 function endQuizz()
                                 {
                                     localStorage.removeItem("startTime");
+
                                     $.ajax({
-                                        url: "/QuizletFPT/quiz?status=end",
+                                        url: "/QuizletFPT/quiz?status=end&",
                                         type: "post", //send it through get method
                                         data: {
                                             time: elapsedTime,
@@ -159,8 +164,6 @@
                                     return prePageInput.value;
 
                                 }
-
-
                                 updateTimer();
                                 var timerInterval = setInterval(updateTimer, 1000);
 

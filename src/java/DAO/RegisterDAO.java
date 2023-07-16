@@ -30,7 +30,7 @@ public class RegisterDAO {
             ps.setString(1, email);
             rs = ps.executeQuery();
             while (rs.next()) {
-                Account a = new Account(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getInt(6));
+                Account a = new Account(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),rs.getString(5), rs.getString(6), rs.getInt(7), rs.getInt(8));
                 return a;
             }
 

@@ -52,6 +52,14 @@
         <servlet-name>ChangePass</servlet-name>
         <servlet-class>Controller.ChangePass</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>HistoryServlet</servlet-name>
+        <servlet-class>Controller.HistoryServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SearchServlet</servlet-name>
+        <servlet-class>Controller.SearchServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LogoutServlet</servlet-name>
         <url-pattern>/logout</url-pattern>
@@ -87,6 +95,14 @@
     <servlet-mapping>
         <servlet-name>ChangePass</servlet-name>
         <url-pattern>/changepass</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>HistoryServlet</servlet-name>
+        <url-pattern>/history</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SearchServlet</servlet-name>
+        <url-pattern>/search</url-pattern>
     </servlet-mapping>
     <mime-mapping>
         <extension>css</extension>

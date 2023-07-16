@@ -7,38 +7,31 @@ package Controller;
 import DAO.QuestionDAO;
 import Model.Question;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-/**
- *
- * @author vohuy
- */
 public class CreateTest extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        LocalTime currentTime = LocalTime.now();
-        int minutes = currentTime.getMinute();
-        int seconds = currentTime.getSecond();
-        int hour = currentTime.getHour();
-        request.getSession().setAttribute("start", hour + ":" + minutes + ":" + seconds);
+        LocalDateTime currentDateTime = LocalDateTime.now();
+        int day = currentDateTime.getDayOfMonth();
+        int month = currentDateTime.getMonthValue();
+        int year = currentDateTime.getYear();
+        int minutes = currentDateTime.getMinute();
+        int seconds = currentDateTime.getSecond();
+        int hour = currentDateTime.getHour();
+        String startTime = day + "/" + month + "/" + year + " " + hour + ":" + minutes + ":" + seconds;
+        request.getSession().setAttribute("start", startTime);
         String courseIdParam = request.getParameter("courseID");
 
         if (request.getSession().getAttribute("exam") == null) {
@@ -49,7 +42,10 @@ public class CreateTest extends HttpServlet {
             request.getSession().setAttribute("exam", questions);
             request.getSession().setAttribute("ans", ans);
         }
-
+        Cookie testing = new Cookie("testing","1");
+        testing.setMaxAge(-1);
+        response.addCookie(testing);
+        
         request.getSession().setAttribute("courseID", courseIdParam);
         request.getRequestDispatcher("/quiz").forward(request, response);
     }

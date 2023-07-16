@@ -63,7 +63,7 @@
                             <div class="form-log">
                                 <input type="submit" value="Create new account" class="create-btn" onclick="showAlert()" > </input>
                                 <p class="option">Or</p>
-                                <a class='log-btn' href="login">Log In</a>
+                                <a class='log-btn' href="loginView.jsp">Log In</a>
                             </div>
                         </form>
                     </div>
