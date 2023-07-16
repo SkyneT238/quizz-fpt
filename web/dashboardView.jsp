@@ -8,37 +8,23 @@
 <fmt:setBundle basename="bundle.bundle" />
 
 <html>
-    <c:choose>
-        <c:when test="${ empty user}">
-            <c:redirect url="loginView.jsp" />
-        </c:when>
-        <c:otherwise>
-        </c:otherwise>
-    </c:choose>
     <head>
         <meta charset="UTF-8">
         <title>Dashboard</title>
         <link rel="stylesheet" type="text/css" href="Style/dashboardCss.css">
     </head>
-    <%@ include file="/includes/header_admin.jsp" %>
-    <%
-    response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
-    if (session.getAttribute("user") == null) {
-        response.sendRedirect("login.jsp");
-    }
-%>
-
+    <%@ include file="/includes/header.jsp" %>
     <body>
         <section >
             <div class="view">
-                <%@ include file="/includes/sidebar_admin.jsp" %>
+                <%@ include file="/includes/sidebar.jsp" %>
                 <div class="body">
                     <div class="body__user">
                         <img class="user__data-img" src="assets/avatar.svg" />
 
                         <div class="user__data-content">
                             <div class="data-info">
-                                <div class="data-info-name">${user.fullname}</div>
+                                <div class="data-info-name">${user.fullname==null ?"Hello new player ":user.fullname}</div>
                                 <div class="data-info-type">${user.username}</div>
                             </div>
                             <div class="user__data-process">

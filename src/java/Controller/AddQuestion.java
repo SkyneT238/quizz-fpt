@@ -43,6 +43,7 @@ public class AddQuestion extends HttpServlet {
          
         Question ques = new Question(Integer.parseInt(cate),question,difficult,ans1,ans2,ans3,key,currentTime,currentTime);
         dao.addQuest(ques,dao.getPlace());
+        response.sendRedirect("addQuest.jsp");
            
     }
 

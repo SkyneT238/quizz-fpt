@@ -3,11 +3,43 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/E:/NetBean/quizz-fpt/web/dashboardView.jsp</file>
-            <file>file:/E:/NetBean/quizz-fpt/web/includes/countDown.jsp</file>
-            <file>file:/E:/NetBean/quizz-fpt/web/includes/sidebar_admin.jsp</file>
-            <file>file:/E:/NetBean/quizz-fpt/src/java/Filler/LoginFiller.java</file>
+            <file>file:/E:/NetBean/quizz-fpt/src/java/Model/Account.java</file>
+            <file>file:/E:/NetBean/quizz-fpt/src/java/Controller/AddCourse.java</file>
+            <file>file:/E:/NetBean/quizz-fpt/web/WEB-INF/web.xml</file>
+            <file>file:/E:/NetBean/quizz-fpt/src/java/Model/TestRecord.java</file>
+            <file>file:/E:/NetBean/quizz-fpt/src/java/Controller/ResultData.java</file>
+            <file>file:/E:/NetBean/quizz-fpt/web/instructionView.jsp</file>
+            <file>file:/E:/NetBean/quizz-fpt/src/java/Controller/RegisterServlet.java</file>
+            <file>file:/E:/NetBean/quizz-fpt/src/java/Controller/CoursesServlet.java</file>
             <file>file:/E:/NetBean/quizz-fpt/web/includes/header_admin.jsp</file>
+            <file>file:/E:/NetBean/quizz-fpt/src/java/Filler/QuizzFiller.java</file>
+            <file>file:/E:/NetBean/quizz-fpt/web/dashboardView_admin.jsp</file>
+            <file>file:/E:/NetBean/quizz-fpt/src/java/Controller/CreateTest.java</file>
+            <file>file:/E:/NetBean/quizz-fpt/src/java/Controller/SearchServlet.java</file>
+            <file>file:/E:/NetBean/quizz-fpt/src/java/Controller/QuizServlet.java</file>
+            <file>file:/E:/NetBean/quizz-fpt/src/java/DAO/AdminDAO.java</file>
+            <file>file:/E:/NetBean/quizz-fpt/web/addQuest.jsp</file>
+            <file>file:/E:/NetBean/quizz-fpt/src/java/DAO/CourseDAO.java</file>
+            <file>file:/E:/NetBean/quizz-fpt/web/includes/header.jsp</file>
+            <file>file:/E:/NetBean/quizz-fpt/src/java/DAO/QuestionDAO.java</file>
+            <file>file:/E:/NetBean/quizz-fpt/src/java/Controller/AddQuestion.java</file>
+            <file>file:/E:/NetBean/quizz-fpt/web/loginView.jsp</file>
+            <file>file:/E:/NetBean/quizz-fpt/web/dashboardView.jsp</file>
+            <file>file:/E:/NetBean/quizz-fpt/src/java/DAO/LoginDAO.java</file>
+            <file>file:/E:/NetBean/quizz-fpt/src/java/bundle/bundle_en.properties</file>
+            <file>file:/E:/NetBean/quizz-fpt/web/includes/countDown.jsp</file>
+            <file>file:/E:/NetBean/quizz-fpt/src/java/bundle/bundle_vi.properties</file>
+            <file>file:/E:/NetBean/quizz-fpt/src/java/Filler/LoginFiller.java</file>
+            <file>file:/E:/NetBean/quizz-fpt/web/profileView.jsp</file>
+            <file>file:/E:/NetBean/quizz-fpt/web/coursesView.jsp</file>
+            <file>file:/E:/NetBean/quizz-fpt/src/java/DAO/RegisterDAO.java</file>
+            <file>file:/E:/NetBean/quizz-fpt/web/addCate.jsp</file>
+            <file>file:/E:/NetBean/quizz-fpt/src/java/DAO/AccountDAO.java</file>
+            <file>file:/E:/NetBean/quizz-fpt/web/includes/sidebar_admin.jsp</file>
+            <file>file:/E:/NetBean/quizz-fpt/web/quizView.jsp</file>
+            <file>file:/E:/NetBean/quizz-fpt/src/java/Controller/LoginServlet.java</file>
+            <file>file:/E:/NetBean/quizz-fpt/src/java/Model/Courses.java</file>
+            <file>file:/E:/NetBean/quizz-fpt/src/java/Model/Answer.java</file>
         </group>
     </open-files>
 </project-private>

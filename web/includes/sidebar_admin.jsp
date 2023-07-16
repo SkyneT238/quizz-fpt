@@ -27,15 +27,15 @@
         <aside class="sidebar">
             <div class="sidebar__item">
                 <i class=" sidebar__item-icon fa-solid fa-database"></i>
-                <a href="home" class="sidebar__item-list">Thông tin</a>
+                <a href="dashboardView_admin.jsp" class="sidebar__item-list">Thông tin</a>
             </div>
             <div class="sidebar__item">
                 <i class=" sidebar__item-icon fa-solid fa-gamepad"></i>
-                <a href="courses" class="sidebar__item-list"><fmt:message key="nav.left.quiz"/></a>
+                <a href="addCate.jsp" class="sidebar__item-list"><fmt:message key="nav.left.quiz"/></a>
             </div>
              <div class="sidebar__item">
                <i class="sidebar__item-icon fa-solid fa-clock-rotate-left"></i>
-                <a href="history" class="sidebar__item-list"><fmt:message key="nav.left.history"/></a>
+                <a href="addQuest.jsp" class="sidebar__item-list"><fmt:message key="nav.left.history"/></a>
              </div> 
         </aside>
     </body>

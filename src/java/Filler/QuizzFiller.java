@@ -99,40 +99,21 @@ public class QuizzFiller implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response,
             FilterChain chain)
             throws IOException, ServletException {
-        
-        if (debug) {
-            log("QuizzFiller:doFilter()");
-        }
-        
-        doBeforeProcessing(request, response);
-           HttpServletRequest httpRequest = (HttpServletRequest) request;
-        HttpServletResponse httpRespon = (HttpServletResponse)  response;
-        //if( httpRequest.getSession().getAttribute("user")!=null &&  httpRequest.getSession().getAttribute("exam")!=null && (!httpRequest.getServletPath().contains("quiz")|| httpRequest.getServletPath().contains("create") )) request.getRequestDispatcher("quiz").forward(request, response);;
-        Throwable problem = null;
-        try {
-            chain.doFilter(request, response);
-        } catch (Throwable t) {
-            // If an exception is thrown somewhere down the filter chain,
-            // we still want to execute our after processing, and then
-            // rethrow the problem after that.
-            problem = t;
-            t.printStackTrace();
-        }
-        
-        doAfterProcessing(request, response);
-
-        // If there was a problem, we want to rethrow it if it is
-        // a known type, otherwise log it.
-        if (problem != null) {
-            if (problem instanceof ServletException) {
-                throw (ServletException) problem;
-            }
-            if (problem instanceof IOException) {
-                throw (IOException) problem;
-            }
-            sendProcessingError(problem, response);
-        }
+//
+//        HttpServletRequest httpRequest = (HttpServletRequest) request;
+//        HttpServletResponse httpRespon = (HttpServletResponse) response;
+//        if (httpRequest.getSession().getAttribute("exam") != null) {
+//            String requestURL = httpRequest.getRequestURL().toString();
+//            System.out.println(requestURL);
+//            if (requestURL.contains("quiz") ||  requestURL.contains("Style")) {
+//                chain.doFilter(request, response);
+//            } else {
+//                httpRespon.sendRedirect("quiz");
+//            }
+//        }
+        chain.doFilter(request, response);
     }
+
 
     /**
      * Return the filter configuration object for this filter.

@@ -1,54 +1,36 @@
-<%-- 
-    Document   : dashboardView_admin
-    Created on : Jul 16, 2023, 12:25:03 PM
-    Author     : vohuy
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<jsp:useBean id="ad" class="DAO.AdminDAO" scope="session"></jsp:useBean>
+<% response.setCharacterEncoding("UTF-8"); %>
+<c:set var="lang" value="${cookie.lang.value}" />
+<fmt:setLocale value="${lang}" scope="session" />
+<fmt:setBundle basename="bundle.bundle" />
+
 <html>
     <head>
-        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script type="text/javascript">
-            google.charts.load("current", {packages: ["corechart"]});
-            google.charts.setOnLoadCallback(drawChart);
-            function drawChart() {
-                $.ajax({
-                    url: "/QuizletFPT/adminDashboard",
-                    type: "post", //send it through get method
-                    data: {
-                        time: elapsedTime,
-                        key: getSelectedAnswer(),
-                        page: getPage()
-                    },
-                    success: function (data) {
-                        window.location.href = "resultView.jsp";
-                    },
-                    error: function (xhr) {
-                        //Do Something to handle error
-                    }
-                });
-                var data = google.visualization.arrayToDataTable([
-                    ['Task', 'Hours per Day'],
-                    ['Work', 11],
-                    ['Eat', 2],
-                    ['Commute', 2],
-                    ['Watch TV', 2],
-                    ['Sleep', 7]
-                ]);
-
-                var options = {
-                    title: 'My Daily Activities',
-                    is3D: true,
-                };
-
-                var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
-                chart.draw(data, options);
-            }
-        </script>
+        <meta charset="UTF-8">
+        <title>Dashboard</title>
+        <link rel="stylesheet" type="text/css" href="Style/dashboardCss.css">
     </head>
+    <%@ include file="/includes/header_admin.jsp" %>
     <body>
-        <div id="piechart_3d" style="width: 900px; height: 500px;"></div>
+        <section >
+            <div class="view">
+                <%@ include file="/includes/sidebar_admin.jsp" %>
+                <div class="body">
+                    <div class="body_admin">
+                        <h1> Quizz Manager Information </h1>
+                        
+                        <h3>Total Account : ${ad.totalAccount}</h3>
+                        <h3>Total Question : ${ad.totalQuestion}</h3>
+                        <h3>Total Course : ${ad.totalCourse}</h3>
+                    </div>  
+                </div>
+            </div>
+        </section>
     </body>
 </html>
+
+
+

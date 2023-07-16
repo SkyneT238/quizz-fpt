@@ -67,7 +67,7 @@
                         </div>
                         <div class="body__instruct-desc"> <fmt:message key="instruction.desc2"/></div>
                         <div class="body__instruct-desc"><fmt:message key="instruction.desc3"/></div>
-                        <a href="create?courseID=${cInfo.courseID}" class="body__submit-btn"><fmt:message key="instruction.btn"/></a>
+                        <a href="createquiz?courseID=${cInfo.courseID}" class="body__submit-btn"><fmt:message key="instruction.btn"/></a>
                     </div>
                 </div>
         </section>

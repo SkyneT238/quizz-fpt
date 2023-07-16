@@ -44,7 +44,7 @@ public class RegisterServlet extends HttpServlet {
                 request.setAttribute("message", bundle.getString("signup.error.message.provide"));
                 request.getRequestDispatcher("registerView.jsp").forward(request, response);
             } else {
-                Account a = register.checkAccountExist(email);
+                Account a = register.checkAccountExist(email,username);
                 if (a == null) {
                     register.register(username, pass, email);
                     response.sendRedirect("loginView.jsp");

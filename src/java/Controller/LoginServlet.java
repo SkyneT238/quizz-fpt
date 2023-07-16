@@ -83,7 +83,9 @@ public class LoginServlet extends HttpServlet {
                 request.setAttribute("title", null);
                 request.setAttribute("message", null);
                 //request.getRequestDispatcher("dashboardView.jsp").forward(request, response);
+                if(a.getRole() == 0 )
                 response.sendRedirect("dashboardView.jsp?username=" + encodedUsername);
+                else    response.sendRedirect("dashboardView_admin.jsp");
             }
         } catch (Exception e) {
         }

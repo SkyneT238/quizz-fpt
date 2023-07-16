@@ -36,6 +36,7 @@
                     <div class="header-search">
                         <i class="fa-solid fa-magnifying-glass search-icon"></i>
                         <input class="search-input" type="text" placeholder="<fmt:message key="nav.search.focus"/>" />
+                        <div id="list-search"></div>
                     </div>
                     <a class="header-btn" href="courses"><fmt:message key="nav.start"/></a>
                     <div class="header-user" id="user-nav">
@@ -141,6 +142,9 @@
 
                                         },
                                         success: function (data) {
+                                            var row = document.getElementById("list-search");
+                                            row.innerHTML = null;
+                                            row.innerHTML += data;
 
                                         },
                                         error: function (xhr) {

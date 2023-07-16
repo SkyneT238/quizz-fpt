@@ -10,10 +10,10 @@ public class Account {
     private int rankID;
     private String contactnumber;
     private String fullname;
+    private int role;
 
     public Account() {
     }
-
 
     public Account(int userID, String username, String fullname, String email, String contactnumber, String password, int point, int rankID) {
         this.userID = userID;
@@ -24,6 +24,18 @@ public class Account {
         this.password = password;
         this.point = point;
         this.rankID = rankID;
+    }
+
+    public Account(int userID, String username, String fullname, String email, String contactnumber, String password, int point, int rankID, int role) {
+        this.userID = userID;
+        this.username = username;
+        this.fullname = fullname;
+        this.email = email;
+        this.contactnumber = contactnumber;
+        this.password = password;
+        this.point = point;
+        this.rankID = rankID;
+        this.role = role;
     }
 
     public int getUserID() {
@@ -74,6 +86,10 @@ public class Account {
         this.rankID = rankID;
     }
 
+    public int getRole() {
+        return role;
+    }
+
     public String getContactnumber() {
         return contactnumber;
     }
@@ -89,5 +105,5 @@ public class Account {
     public void setFullname(String fullname) {
         this.fullname = fullname;
     }
-    
+
 }

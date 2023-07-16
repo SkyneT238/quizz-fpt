@@ -38,7 +38,7 @@ public class QuizServlet extends HttpServlet {
         if (request.getParameter("status") != null && request.getParameter("status").contains("end")) {
             ans.set(Integer.parseInt(request.getParameter("page")) - 1, request.getParameter("key"));
             request.getSession().setAttribute("time", request.getParameter("time"));
-            request.getRequestDispatcher("result").forward(request, response);
+            request.getRequestDispatcher("resultquiz").forward(request, response);
         }
 
         int size = questions.size();

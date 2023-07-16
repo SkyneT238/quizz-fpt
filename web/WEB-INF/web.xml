@@ -94,11 +94,11 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>CreateTest</servlet-name>
-        <url-pattern>/create</url-pattern>
+        <url-pattern>/createquiz</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ResultData</servlet-name>
-        <url-pattern>/result</url-pattern>
+        <url-pattern>/resultquiz</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ChangePass</servlet-name>
