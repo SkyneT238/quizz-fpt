@@ -486,3 +486,8 @@ body {
     width: 100%;
 
 }
+
+.search-item {
+    color: black;
+    text-decoration: none;
+}

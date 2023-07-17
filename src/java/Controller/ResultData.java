@@ -78,6 +78,7 @@ public class ResultData extends HttpServlet {
         request.getSession().setAttribute("ok", "true");
         request.getSession().removeAttribute("exam");
         request.getSession().removeAttribute("page");
+        request.getRequestDispatcher("resultView.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

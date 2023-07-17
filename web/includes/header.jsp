@@ -33,10 +33,10 @@
                     <a class="header-title" href="home">
                         <h1 class="header-title">FPT Quiz</h1>
                     </a>
-                    <div class="header-search">
+                    <div style="position: relative" class="header-search">
                         <i class="fa-solid fa-magnifying-glass search-icon"></i>
                         <input class="search-input" type="text" placeholder="<fmt:message key="nav.search.focus"/>" />
-                        <div id="list-search"></div>
+                        <div style="position:absolute; top: 56px; left: 0px; width: 100%; background-color: white; display: flex; flex-direction: column" id="list-search"></div>
                     </div>
                     <a class="header-btn" href="courses"><fmt:message key="nav.start"/></a>
                     <div class="header-user" id="user-nav">
@@ -128,10 +128,7 @@
     </body>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
-                                // Lấy phần tử input bằng cách sử dụng CSS selector
                                 var inputElement = document.querySelector('.header-search .search-input');
-
-// Lắng nghe sự kiện nhập liệu
                                 inputElement.addEventListener('input', function (event) {
                                     var inputValue = event.target.value;
                                     $.ajax({

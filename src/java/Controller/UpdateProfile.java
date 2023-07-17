@@ -39,7 +39,7 @@ public class UpdateProfile extends HttpServlet {
         AccountDAO dao = new AccountDAO();
         Account updatedInfo = dao.updateAccount(userID, fullname, contactnumber);
         request.getSession().setAttribute("user", updatedInfo);
-        request.getRequestDispatcher("dashboardView.jsp").forward(request, response);
+        request.getRequestDispatcher("home").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

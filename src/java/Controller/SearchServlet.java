@@ -56,7 +56,7 @@ public class SearchServlet extends HttpServlet {
 
         for (Courses course : search) {
             String link = "instruction?courseID=" + course.getCourseID(); 
-            String buttonHTML = "<button class=\"search-item\"><a href=\"" + link + "\">" + course.getCourseName() + "</a></button>";
+            String buttonHTML = "<button style=\"background-color:white;\"  class=\"search-item\"><a href=\"" + link + "\">" + course.getCourseName() + "</a></button>";
             out.println(buttonHTML);
         }
 

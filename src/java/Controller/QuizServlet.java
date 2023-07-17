@@ -4,16 +4,13 @@
  */
 package Controller;
 
-import DAO.QuestionDAO;
 import Model.Question;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.time.LocalTime;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class QuizServlet extends HttpServlet {
@@ -38,7 +35,6 @@ public class QuizServlet extends HttpServlet {
         if (request.getParameter("status") != null && request.getParameter("status").contains("end")) {
             ans.set(Integer.parseInt(request.getParameter("page")) - 1, request.getParameter("key"));
             request.getSession().setAttribute("time", request.getParameter("time"));
-            request.getRequestDispatcher("resultquiz").forward(request, response);
         }
 
         int size = questions.size();

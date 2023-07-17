@@ -122,3 +122,8 @@ section{
     background-color: #F65151;
     color: #FFF;
 }
+
+.error-message {
+    color: red;
+    font-size: 12px;
+}

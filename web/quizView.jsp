@@ -8,12 +8,6 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <%
-                response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
-                if (session.getAttribute("exam") == null) {
-                    response.sendRedirect("login.jsp");
-                }
-        %>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title><fmt:message key="quiz.title"/></title>
         <link rel="stylesheet" type="text/css" href="Style/quiz.css">
@@ -39,7 +33,7 @@
                                     <button id="button" style="font-size: 16px; width: 50px; height: 50px; font-weight: 600" class="${i==page?"active":""}" type="submit" name="page" value="${i}">${i}</button>
                                 </c:forEach>
                             </div>
-                            <a class="submit-quiz" onclick="endQuizz()"><fmt:message key="quiz.btn"/></a>
+                            <button class="submit-quiz" onclick="endQuizz()"><fmt:message key="quiz.btn"/></button>
                         </div>
                         <c:forEach var="question" items="${data}">
                             <div class="body__quiz">
@@ -135,7 +129,7 @@
 
                                         },
                                         success: function (data) {
-                                            window.location.href = "resultView.jsp";
+                                            window.location.replace("resultquiz");
                                         },
                                         error: function (xhr) {
                                             //Do Something to handle error
