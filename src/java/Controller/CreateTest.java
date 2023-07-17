@@ -13,7 +13,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -34,20 +33,24 @@ public class CreateTest extends HttpServlet {
         request.getSession().setAttribute("start", startTime);
         String courseIdParam = request.getParameter("courseID");
 
-        if (request.getSession().getAttribute("exam") == null) {
-            int courseId = Integer.parseInt(courseIdParam);
-            QuestionDAO dao = new QuestionDAO();
-            List<Question> questions = dao.getQuestion(courseId);
-            List<String> ans = new ArrayList<>(Collections.nCopies(questions.size(), null));
-            request.getSession().setAttribute("exam", questions);
-            request.getSession().setAttribute("ans", ans);
-        }
-        Cookie testing = new Cookie("testing","1");
-        testing.setMaxAge(-1);
-        response.addCookie(testing);
-        
+        int courseId = Integer.parseInt(courseIdParam);
+        QuestionDAO dao = new QuestionDAO();
+        List<Question> questions = dao.getQuestion(courseId);
+        List<String> ans = new ArrayList<>(Collections.nCopies(questions.size(), null));
+        request.getSession().setAttribute("exam", questions);
+        request.getSession().setAttribute("ans", ans);
+
+        int maxQuizTime = questions.size() * 60;
+        long currentTime = System.currentTimeMillis() / 1000;
+        Cookie startTimeMiliS = new Cookie("startTime", String.valueOf(currentTime));
+        Cookie quizTime = new Cookie("quizTime", String.valueOf(maxQuizTime));
+        startTimeMiliS.setMaxAge(maxQuizTime);
+        quizTime.setMaxAge(maxQuizTime);
+        response.addCookie(startTimeMiliS);
+        response.addCookie(quizTime);
+
         request.getSession().setAttribute("courseID", courseIdParam);
-        request.getRequestDispatcher("/quiz").forward(request, response);
+        response.sendRedirect("quiz");
     }
 
 // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

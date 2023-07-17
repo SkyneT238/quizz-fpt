@@ -1,6 +1,13 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<c:if test="${not empty sessionScope.exam}">
+    <script>
+        history.go(-1);
+    </script>
+</c:if>
 <html>
     <c:set var="lang" value="${cookie.lang.value}" />
     <fmt:setLocale value="${lang}" scope="session" />
@@ -33,13 +40,13 @@
                 <i class=" sidebar__item-icon fa-solid fa-gamepad"></i>
                 <a href="courses" class="sidebar__item-list"><fmt:message key="nav.left.quiz"/></a>
             </div>
-             <div class="sidebar__item">
-               <i class="sidebar__item-icon fa-solid fa-clock-rotate-left"></i>
+            <div class="sidebar__item">
+                <i class="sidebar__item-icon fa-solid fa-clock-rotate-left"></i>
                 <a href="history" class="sidebar__item-list"><fmt:message key="nav.left.history"/></a>
             </div>
             <div class="sidebar__item">
                 <i class=" sidebar__item-icon fa-solid fa-headset"></i>
-                <a href="#" class="sidebar__item-list"><fmt:message key="nav.left.support"/></a>
+                <a href="support.jsp" class="sidebar__item-list"><fmt:message key="nav.left.support"/></a>
             </div>
             <div class="sidebar__item">
                 <i class=" sidebar__item-icon fa-solid fa-bell"></i>

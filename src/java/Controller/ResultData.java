@@ -57,7 +57,7 @@ public class ResultData extends HttpServlet {
             }
         }
 
-        Cookie testing = new Cookie("testing", "0");
+        Cookie testing = new Cookie("startTime", null);
         testing.setMaxAge(0);
         response.addCookie(testing);
 

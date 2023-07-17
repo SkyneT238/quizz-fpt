@@ -86,23 +86,18 @@
                                         }
                                     });
                                 };
-                                var startTime;
+                                var startTime = parseInt(getCookie("startTime"));
+                                var quizTime =  parseInt(getCookie("quizTime"));
                                 var elapsedTime;
-                                if (localStorage.getItem("startTime")) {
-                                    startTime = parseInt(localStorage.getItem("startTime"));
-                                } else {
-                                    startTime = Math.floor(Date.now() / 1000);
-                                    localStorage.setItem("startTime", startTime);
-                                }
-
+                    
                                 function updateTimer() {
                                     var currentTime = Math.floor(Date.now() / 1000);
                                     elapsedTime = currentTime - startTime;
-                                    var remainingTime = 60 - elapsedTime; //// set time ở đêyyy
+                                    var remainingTime = quizTime - elapsedTime;
 
                                     if (remainingTime <= 0) {
                                         clearInterval(timerInterval);
-                                        localStorage.setItem("startTime", -1);
+                                        setCookie("startTime", -1);
                                         endQuizz();
                                     } else {
                                         var minutes = Math.floor(remainingTime / 60);
@@ -111,9 +106,43 @@
                                         var displayMinutes = minutes < 10 ? "0" + minutes : minutes;
                                         var displaySeconds = seconds < 10 ? "0" + seconds : seconds;
 
-                                        document.getElementById("timer").textContent = displayMinutes + ":" + displaySeconds;
+                                        document.getElementById("timer").textContent =
+                                                displayMinutes + ":" + displaySeconds;
                                     }
                                 }
+
+                                function getCookie(name) {
+                                    var cookieArr = document.cookie.split(";");
+
+                                    for (var i = 0; i < cookieArr.length; i++) {
+                                        var cookiePair = cookieArr[i].split("=");
+
+                                        if (name === cookiePair[0].trim()) {
+                                            return decodeURIComponent(cookiePair[1]);
+                                        }
+                                    }
+
+                                    return null;
+                                }
+
+                                function setCookie(name, value) {
+                                    var now = new Date();
+                                    now.setFullYear(now.getFullYear() + 1);
+                                    var cookieString =
+                                            encodeURIComponent(name) +
+                                            "=" +
+                                            encodeURIComponent(value) +
+                                            ";expires=" +
+                                            now.toUTCString() +
+                                            ";path=/";
+                                    document.cookie = cookieString;
+                                }
+
+                                function deleteCookie(name) {
+                                    document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                                }
+                                updateTimer();
+                                var timerInterval = setInterval(updateTimer, 1000);
 
                                 function endQuizz()
                                 {
@@ -158,8 +187,7 @@
                                     return prePageInput.value;
 
                                 }
-                                updateTimer();
-                                var timerInterval = setInterval(updateTimer, 1000);
+
 
     </script>
 

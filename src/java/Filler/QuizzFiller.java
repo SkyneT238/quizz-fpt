@@ -108,7 +108,7 @@ public class QuizzFiller implements Filter {
 //            if (requestURL.contains("quiz") ||  requestURL.contains("Style")) {
 //                chain.doFilter(request, response);
 //            } else {
-//                httpRespon.sendRedirect("quiz");
+//                System.out.println("bugg");
 //            }
 //        }
         chain.doFilter(request, response);
